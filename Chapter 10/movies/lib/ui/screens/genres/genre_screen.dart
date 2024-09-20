@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies/router/app_routes.dart';
 
-import '../../../data/models/movie.dart';
-import '../../../providers.dart';
-import '../../movie_viewmodel.dart';
-import '../../theme/theme.dart';
-import '../../widgets/not_ready.dart';
-import '../../widgets/sliver_divider.dart';
-import '../../widgets/vert_movie_list.dart';
-import 'genre_search_row.dart';
-import 'genre_section.dart';
-import 'sort_picker.dart';
+import 'package:movies/data/models/movie.dart';
+import 'package:movies/providers.dart';
+import 'package:movies/ui/movie_viewmodel.dart';
+import 'package:movies/ui/theme/theme.dart';
+import 'package:movies/ui/widgets/not_ready.dart';
+import 'package:movies/ui/widgets/sliver_divider.dart';
+import 'package:movies/ui/widgets/vert_movie_list.dart';
+import 'package:movies/ui/screens/genres/genre_search_row.dart';
+import 'package:movies/ui/screens/genres/genre_section.dart';
+import 'package:movies/ui/screens/genres/sort_picker.dart';
 
 @RoutePage(name: 'GenreRoute')
 class GenreScreen extends ConsumerStatefulWidget {
@@ -43,6 +43,7 @@ class _GenreScreenState extends ConsumerState<GenreScreen> {
   }
 
   void buildGenreState() {
+    genreStates.clear();
     for (final genre in movieViewModel.movieGenres) {
       genreStates.add(GenreState(genre: genre, isSelected: false));
     }

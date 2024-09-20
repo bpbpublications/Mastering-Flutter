@@ -4,14 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies/providers.dart';
 import 'package:movies/ui/screens/home/title_row.dart';
 
-import '../../../data/models/movie.dart';
-import '../../../router/app_routes.dart';
-import '../../movie_viewmodel.dart';
-import '../../theme/theme.dart';
-import '../../widgets/movie_widget.dart';
-import '../../widgets/not_ready.dart';
-import 'home_screen_image.dart';
-import 'horiz_movies.dart';
+import 'package:movies/data/models/movie.dart';
+import 'package:movies/router/app_routes.dart';
+import 'package:movies/ui/movie_viewmodel.dart';
+import 'package:movies/ui/theme/theme.dart';
+import 'package:movies/ui/widgets/movie_widget.dart';
+import 'package:movies/ui/widgets/not_ready.dart';
+import 'package:movies/ui/screens/home/home_screen_image.dart';
+import 'package:movies/ui/screens/home/horiz_movies.dart';
 
 @RoutePage(name: 'HomeRoute')
 class HomeScreen extends ConsumerStatefulWidget {
@@ -70,7 +70,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   HorizontalMovies(
                     movies: movieViewModel.trendingMovies,
                     onMovieTap: onMovieTap,
-                    movieType: MovieType.Trending,
+                    movieType: MovieType.trending,
                   ),
                   TitleRow(
                     text: 'Popular',
@@ -79,7 +79,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   HorizontalMovies(
                     movies: movieViewModel.popularMovies,
                     onMovieTap: onMovieTap,
-                    movieType: MovieType.Popular,
+                    movieType: MovieType.popular,
                   ),
                   TitleRow(
                     text: 'Top Rated',
@@ -88,7 +88,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   HorizontalMovies(
                     movies: movieViewModel.topRatedMovies,
                     onMovieTap: onMovieTap,
-                    movieType: MovieType.TopRated,
+                    movieType: MovieType.topRated,
                   ),
                 ],
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/utils.dart';
-import '../../widgets/text_icon.dart';
+import 'package:movies/utils/utils.dart';
+import 'package:movies/ui/widgets/text_icon.dart';
 
 typedef OnFavoriteSelected = void Function();
 
@@ -31,7 +31,7 @@ class _ButtonRowState extends State<ButtonRow> with TickerProviderStateMixin {
     super.initState();
     _sizeController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1), // Adjust pulse duration
+      duration: const Duration(seconds: 1), // Adjust pulse duration
     )..repeat(reverse: true); // Make animation repeat
 
     _sizeAnimation = Tween<double>(
@@ -43,7 +43,7 @@ class _ButtonRowState extends State<ButtonRow> with TickerProviderStateMixin {
 
     _colorController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1), // Adjust color change duration
+      duration: const Duration(seconds: 1), // Adjust color change duration
     )..repeat(reverse: true);
 
     _colorAnimation = ColorTween(
@@ -89,7 +89,7 @@ class _ButtonRowState extends State<ButtonRow> with TickerProviderStateMixin {
                           color: _colorAnimation.value,
                         );
                       })
-                  : Icon(
+                  : const Icon(
                       Icons.favorite_border,
                       color: Colors.white,
                     ),

@@ -16,9 +16,9 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    screens.add(HomeScreen());
-    screens.add(Placeholder());
-    screens.add(Placeholder());
+    screens.add(const HomeScreen());
+    screens.add(const Placeholder());
+    screens.add(const Placeholder());
   }
 
   @override

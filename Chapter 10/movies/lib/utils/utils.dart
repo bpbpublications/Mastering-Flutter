@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/models/favorite.dart';
+import 'package:movies/data/models/favorite.dart';
 
 typedef OnMovieTap = void Function(int movieId);
 typedef OnMovieVideoTap = void Function(String video);

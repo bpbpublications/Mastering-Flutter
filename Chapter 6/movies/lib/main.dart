@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies/ui/theme/theme.dart';
 
-import 'ui/main_screen.dart';
+import 'package:movies/ui/main_screen.dart';
 
 /// This is the main entry point for Flutter
 /// Use the runApp method to start your app

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../theme/theme.dart';
+import 'package:movies/ui/theme/theme.dart';
 
 typedef OnSearch = void Function(String searchString);
 

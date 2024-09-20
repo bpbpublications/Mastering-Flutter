@@ -5,14 +5,14 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies/providers.dart';
 
-import '../../data/models/movie.dart';
-import '../../utils/utils.dart';
+import 'package:movies/data/models/movie.dart';
+import 'package:movies/utils/utils.dart';
 
 enum MovieType {
-  Trending,
-  TopRated,
-  NowPlaying,
-  Popular
+  trending,
+  topRated,
+  nowPlaying,
+  popular
 }
 
 class MovieWidget extends ConsumerStatefulWidget {

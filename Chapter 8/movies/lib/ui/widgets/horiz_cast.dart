@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'cast_image.dart';
+import 'package:movies/ui/widgets/cast_image.dart';
 
 class HorizontalCast extends ConsumerWidget {
   final List<String> castList;
@@ -19,7 +19,7 @@ class HorizontalCast extends ConsumerWidget {
             crossAxisSpacing: 16,
             mainAxisExtent: 100.0),
         delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-          return CastImage(imageUrl: 'http://image.tmdb.org/t/p/w780/BE2sdjpgsa2rNTFa66f7upkaOP.jpg', name: 'Timothée Chalamet');
+          return const CastImage(imageUrl: 'http://image.tmdb.org/t/p/w780/BE2sdjpgsa2rNTFa66f7upkaOP.jpg', name: 'Timothée Chalamet');
         }, childCount: castList.length),
       ),
     );

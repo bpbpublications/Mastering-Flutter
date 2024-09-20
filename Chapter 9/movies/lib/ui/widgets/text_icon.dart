@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/utils.dart';
+import 'package:movies/utils/utils.dart';
 
 class TextIcon extends StatelessWidget {
   final Text text;

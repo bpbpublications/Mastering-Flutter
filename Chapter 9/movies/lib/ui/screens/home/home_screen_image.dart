@@ -3,8 +3,8 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../providers.dart';
-import '../../../utils/utils.dart';
+import 'package:movies/providers.dart';
+import 'package:movies/utils/utils.dart';
 
 const delayTime = 1000 * 10;
 const animationTime = 1000;

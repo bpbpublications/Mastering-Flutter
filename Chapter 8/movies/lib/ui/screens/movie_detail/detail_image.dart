@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../utils/utils.dart';
+import 'package:movies/utils/utils.dart';
 
 class DetailImage extends StatelessWidget {
   const DetailImage({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/utils.dart';
-import '../../widgets/movie_widget.dart';
+import 'package:movies/utils/utils.dart';
+import 'package:movies/ui/widgets/movie_widget.dart';
 
 class HorizontalMovies extends StatelessWidget {
   final MovieType movieType;

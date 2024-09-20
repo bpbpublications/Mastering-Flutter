@@ -4,7 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies/providers.dart';
 
-import '../../utils/utils.dart';
+import 'package:movies/utils/utils.dart';
 enum MovieType {
   Trending,
   TopRated,
@@ -42,6 +42,12 @@ class _MovieWidgetState extends ConsumerState<MovieWidget>
   void initState() {
     super.initState();
     uniqueHeroTag = widget.movieUrl + widget.movieType.name;
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reset();
+        _controller.stop();
+      }
+    });
   }
 
   @override
@@ -69,12 +75,13 @@ class _MovieWidgetState extends ConsumerState<MovieWidget>
               width: 142,
             )
                 .animate(
-                    autoPlay: animateImage,
+                    autoPlay: false,
                     controller: _controller,
                     onComplete: (controller) {
-                      _controller.reset();
-                      ref.read(heroTagProvider.notifier).state = uniqueHeroTag;
-                      widget.onMovieTap(widget.movieId);
+                      if (animateImage) {
+                        animateImage = false;
+                        widget.onMovieTap(widget.movieId);
+                      }
                     })
                 .scaleXY(begin: 1.0, end: 1.1, duration: 600.ms)
                 .then(delay: 600.ms)

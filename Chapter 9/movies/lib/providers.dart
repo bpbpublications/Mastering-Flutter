@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies/ui/screens/genres/genre_section.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'router/app_routes.dart';
+import 'package:movies/router/app_routes.dart';
 
 part 'providers.g.dart';
 
@@ -58,6 +58,6 @@ List<GenreState> genres(GenresRef ref) =>  [
   GenreState(genre: 'Fantasy', isSelected: false),
 ];
 
-@riverpod
+@Riverpod(keepAlive: true)
 AppRouter appRouter(AppRouterRef ref) => AppRouter();
 

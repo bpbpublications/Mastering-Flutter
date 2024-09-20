@@ -1,11 +1,11 @@
 
-import '../data/models/favorite.dart';
-import '../data/models/movie.dart';
+import 'package:movies/data/models/favorite.dart';
+import 'package:movies/data/models/movie.dart';
 
 class MovieViewModel {
   late List<String> movieGenres;
-  Stream<List<Favorite>>? favoriteStream = null;
-  List<Favorite>? favoriteList = null;
+  Stream<List<Favorite>>? favoriteStream;
+  List<Favorite>? favoriteList;
   List<Movie> trendingMovies = [];
   List<Movie> topRatedMovies = [];
   List<Movie> popularMovies = [];

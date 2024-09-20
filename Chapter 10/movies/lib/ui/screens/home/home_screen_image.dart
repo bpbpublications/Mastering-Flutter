@@ -3,9 +3,9 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../providers.dart';
-import '../../../utils/utils.dart';
-import '../../movie_viewmodel.dart';
+import 'package:movies/providers.dart';
+import 'package:movies/utils/utils.dart';
+import 'package:movies/ui/movie_viewmodel.dart';
 
 const delayTime = 1000 * 10;
 const animationTime = 1000;
@@ -14,7 +14,7 @@ class HomeScreenImage extends ConsumerWidget {
   final MovieViewModel movieViewModel;
   final OnMovieTap onMovieTap;
 
-  HomeScreenImage({required this.movieViewModel, required this.onMovieTap, super.key});
+  const HomeScreenImage({required this.movieViewModel, required this.onMovieTap, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,7 +29,7 @@ class HomeScreenImage extends ConsumerWidget {
         itemCount: movieViewModel.nowPlayingMovies.length,
         itemBuilder: (BuildContext context, int index) {
           final currentMovie = movieViewModel.nowPlayingMovies[index];
-          String uniqueHeroTag = currentMovie.image + 'swiper';
+          String uniqueHeroTag = '${currentMovie.image}swiper';
           return GestureDetector(
             onTap: () {
               ref.read(heroTagProvider.notifier).state = uniqueHeroTag;

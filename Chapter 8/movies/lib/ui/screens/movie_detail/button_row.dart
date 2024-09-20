@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/utils.dart';
-import '../../widgets/text_icon.dart';
+import 'package:movies/utils/utils.dart';
+import 'package:movies/ui/widgets/text_icon.dart';
 
 typedef OnFavoriteSelected = void Function();
 

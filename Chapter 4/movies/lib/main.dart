@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'ui/main_screen.dart';
+import 'package:movies/ui/main_screen.dart';
 
 /// This is the main entry point for Flutter
 /// Use the runApp method to start your app
@@ -15,16 +15,14 @@ class MainApp extends StatefulWidget {
   State<MainApp> createState() => _MainAppState();
 }
 
-/**
- * This is the State for the MainApp
- * Used to display the main app
- */
+/// This is the State for the MainApp
+/// Used to display the main app
 class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
     // The top level Flutter widget
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Movies',
       debugShowCheckedModeBanner: false,
       home: MainScreen(),

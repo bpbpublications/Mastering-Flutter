@@ -2,13 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../providers.dart';
-import '../../theme/theme.dart';
-import '../../widgets/sliver_divider.dart';
-import '../../widgets/vert_movie_list.dart';
-import 'genre_search_row.dart';
-import 'genre_section.dart';
-import 'sort_picker.dart';
+import 'package:movies/providers.dart';
+import 'package:movies/ui/theme/theme.dart';
+import 'package:movies/ui/widgets/sliver_divider.dart';
+import 'package:movies/ui/widgets/vert_movie_list.dart';
+import 'package:movies/ui/screens/genres/genre_search_row.dart';
+import 'package:movies/ui/screens/genres/genre_section.dart';
+import 'package:movies/ui/screens/genres/sort_picker.dart';
 
 @RoutePage(name: 'GenreRoute')
 class GenreScreen extends ConsumerStatefulWidget {
