@@ -22,20 +22,33 @@ class MainScreen extends ConsumerStatefulWidget {
 }
 
 class _MainScreenState extends ConsumerState<MainScreen> {
-  // late TabsRouter currentTabsRouter;
   int currentIndex = 0;
+  List<Widget> tabScreens = [];
 
   @override
   void initState() {
     super.initState();
+    tabScreens.add(const HomeScreen());
+    tabScreens.add(const GenreScreen());
+    tabScreens.add(const FavoriteScreen());
+
     ref.read(eventBusProvider).on<MenuEvent>().listen((event) {
       switch (event) {
         case HomeEvent():
-          pushScreen(const HomeRoute());
+          setState(() {
+            currentIndex = 0;
+            ref.read(currentIndexProvider.notifier).state = currentIndex;
+          });
         case GenreEvent():
-          pushScreen(const GenreRoute());
+          setState(() {
+            currentIndex = 1;
+            ref.read(currentIndexProvider.notifier).state = currentIndex;
+          });
         case FavoritesEvent():
-          pushScreen(const FavoriteRoute());
+          setState(() {
+            currentIndex = 2;
+            ref.read(currentIndexProvider.notifier).state = currentIndex;
+          });
         case QuitEvent():
           SystemNavigator.pop();
         case SearchEvent():
@@ -45,17 +58,14 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         case SearchMovieEvent():
           ref.read(searchTextProvider.notifier).state = event.searchText;
           currentIndex = 1;
-        // currentTabsRouter.setActiveIndex(1);
+          ref.read(currentIndexProvider.notifier).state = currentIndex;
       }
     });
   }
 
-  Future pushScreen(PageRouteInfo route) async {
-    await context.router.push(route);
-  }
-
   @override
   Widget build(BuildContext context) {
+    currentIndex = ref.read(currentIndexProvider);
     return AdaptiveLayout(
       primaryNavigation: SlotLayout(
         config: <Breakpoint, SlotLayoutConfig>{
@@ -80,6 +90,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                   onDestinationSelected: (int index) {
                     setState(() {
                       currentIndex = index;
+                      ref.read(currentIndexProvider.notifier).state = currentIndex;
                     });
                   },
                   selectedIndex: currentIndex,
@@ -92,14 +103,8 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         Breakpoints.standard: SlotLayout.from(
             key: const Key('body'),
             builder: (_) {
-              final body = switch (currentIndex) {
-                0 => const HomeScreen(),
-                1 => const GenreScreen(),
-                2 => const FavoriteScreen(),
-                _ => const HomeScreen()
-              };
               return Scaffold(
-                body: body,
+                body: tabScreens[currentIndex],
               );
             }),
       }),
@@ -109,53 +114,33 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             key: const Key('bottomNavigation'),
             builder: (_) => SizedBox(
               height: 80,
-              child: NavigationBar(
-                height: 80,
-                destinations: const [
-                  NavigationDestination(
-                      icon: Icon(Icons.home), label: 'Home'),
-                  NavigationDestination(
-                      icon: Icon(Symbols.genres), label: 'Genre'),
-                  NavigationDestination(
-                      icon: Icon(Icons.favorite), label: 'Favorites'),
-                ],
-                selectedIndex: currentIndex,
-                onDestinationSelected: (navIndex) {
+              child: BottomNavigationBar(
+                currentIndex: currentIndex,
+                onTap: (index) {
                   setState(() {
-                    currentIndex = navIndex;
+                    currentIndex = index;
+                    ref.read(currentIndexProvider.notifier).state = currentIndex;
                   });
                 },
+                items: const <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Symbols.genres),
+                    label: 'Genre',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.favorite),
+                    label: 'Favorites',
+                  ),
+                ],
               ),
             ),
           ),
         },
       ),
     );
-    // return AutoTabsScaffold(
-    //   backgroundColor: screenBackground,
-    //   routes: const [
-    //     HomeRoute(),
-    //     GenreRoute(),
-    //     FavoriteRoute(),
-    //   ],
-    //   bottomNavigationBuilder: (_, tabsRouter) => buildBottomBar(tabsRouter),
-    // );
   }
-
-// Widget buildBottomBar(TabsRouter tabsRouter) {
-//   currentTabsRouter = tabsRouter;
-//   return NavigationBar(
-//     destinations: const [
-//       NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-//       NavigationDestination(icon: Icon(Symbols.genres), label: 'Genre'),
-//       NavigationDestination(icon: Icon(Icons.favorite), label: 'Favorites'),
-//     ],
-//     selectedIndex: tabsRouter.activeIndex,
-//     onDestinationSelected: (navIndex) {
-//       setState(() {
-//         tabsRouter.setActiveIndex(navIndex);
-//       });
-//     },
-//   );
-// }
 }

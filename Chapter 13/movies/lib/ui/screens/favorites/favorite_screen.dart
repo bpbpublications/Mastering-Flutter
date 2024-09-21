@@ -43,55 +43,56 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
   Widget buildScreen() {
     return SafeArea(
       child: StreamBuilder<List<DBFavorite>>(
-          stream: getFavoriteStream(),
-          builder: (context, snapshot) {
-          if ((snapshot.connectionState != ConnectionState.active) && (snapshot.connectionState != ConnectionState.done)) {
+        stream: getFavoriteStream(),
+        builder: (context, snapshot) {
+          if ((snapshot.connectionState != ConnectionState.active) &&
+              (snapshot.connectionState != ConnectionState.done)) {
             return const NotReady();
           }
-          return Scaffold(
-            body: Container(
-              color: screenBackground,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverList(
-                          delegate: SliverChildListDelegate(
-                            [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    16, 16.0, 0.0, 24.0),
-                                child: Text('My Favorites', style: Theme.of(context).textTheme.titleLarge),
-                              ),
-                            ],
-                          ),
+          return Container(
+            color: screenBackground,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                  16, 16.0, 0.0, 24.0),
+                              child: Text('My Favorites',
+                                  style:
+                                      Theme.of(context).textTheme.titleLarge),
+                            ),
+                          ],
                         ),
-                        SortPicker(
-                            useSliver: true,
-                            onSortSelected: (sorting) {
-                              selectedSort = sorting;
-                              sortMovies();
-                            }),
-                        VerticalFavoriteList(
-                          favorites: snapshot.requireData,
-                          movieViewModel: movieViewModel,
-                          onMovieTap: (movieId) {
-                            context.router
-                                .push(MovieDetailRoute(movieId: movieId));
-                          },
-                              onFavoritesTap: (DBFavorite favorite) {
-                                removeFavorite(favorite);
-                              },
-                        )
-                      ],
-                    ),
+                      ),
+                      SortPicker(
+                          useSliver: true,
+                          onSortSelected: (sorting) {
+                            selectedSort = sorting;
+                            sortMovies();
+                          }),
+                      VerticalFavoriteList(
+                        favorites: snapshot.requireData,
+                        movieViewModel: movieViewModel,
+                        onMovieTap: (movieId) {
+                          context.router
+                              .push(MovieDetailRoute(movieId: movieId));
+                        },
+                        onFavoritesTap: (DBFavorite favorite) {
+                          removeFavorite(favorite);
+                        },
+                      )
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         },

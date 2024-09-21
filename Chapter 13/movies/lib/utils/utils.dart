@@ -35,6 +35,13 @@ bool isMac() {
   return Platform.isMacOS;
 }
 
+bool isWindows() {
+  if (kIsWeb) {
+    return false;
+  }
+  return Platform.isWindows;
+}
+
 enum ImageSize {
   small,
   large

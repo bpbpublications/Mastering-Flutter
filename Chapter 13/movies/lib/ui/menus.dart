@@ -4,11 +4,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies/providers.dart';
 
 sealed class MenuEvent {}
+
 class QuitEvent extends MenuEvent {}
+
 class HomeEvent extends MenuEvent {}
+
 class GenreEvent extends MenuEvent {}
+
 class FavoritesEvent extends MenuEvent {}
+
 class SearchEvent extends MenuEvent {}
+
 class SearchMovieEvent extends MenuEvent {
   final String searchText;
 
@@ -26,6 +32,7 @@ class MenuManager {
       createOptionsMenu(),
     ];
   }
+
   PlatformMenu createMovieMenu() {
     return PlatformMenu(label: 'Movies', menus: [
       PlatformMenuItem(
@@ -55,5 +62,4 @@ class MenuManager {
           shortcut: const SingleActivator(LogicalKeyboardKey.keyS, meta: true)),
     ]);
   }
-
 }

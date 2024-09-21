@@ -18,7 +18,7 @@ Future<void> main() async {
     ColorizeLumberdash(),
   ]);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.black, // Set your desired color here
+    statusBarColor: Colors.black, 
   ));
   await dotenv.load(fileName: '.env');
   if (isDesktop()) {
@@ -38,7 +38,6 @@ class MainApp extends ConsumerStatefulWidget {
 }
 
 class _MainAppState extends ConsumerState<MainApp> {
-
   @override
   Widget build(BuildContext context) {
     final router = ref.watch(appRouterProvider);
@@ -52,6 +51,5 @@ class _MainAppState extends ConsumerState<MainApp> {
         theme: createTheme(),
       ),
     );
-
   }
 }

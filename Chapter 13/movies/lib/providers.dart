@@ -25,6 +25,10 @@ final searchTextProvider = StateProvider<String>((ref) {
   return '';
 });
 
+final currentIndexProvider = StateProvider<int>((ref) {
+  return 0;
+});
+
 
 @Riverpod(keepAlive: true)
 MenuManager menuManager(MenuManagerRef ref) => MenuManager(ref);
