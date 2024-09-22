@@ -5,8 +5,6 @@ import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:movies/providers.dart';
-
-import 'package:movies/router/app_routes.dart';
 import 'package:movies/ui/menus.dart';
 import 'package:movies/ui/screens/favorites/favorite_screen.dart';
 import 'package:movies/ui/screens/genres/genre_screen.dart';
@@ -90,7 +88,8 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                   onDestinationSelected: (int index) {
                     setState(() {
                       currentIndex = index;
-                      ref.read(currentIndexProvider.notifier).state = currentIndex;
+                      ref.read(currentIndexProvider.notifier).state =
+                          currentIndex;
                     });
                   },
                   selectedIndex: currentIndex,
@@ -119,7 +118,8 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                 onTap: (index) {
                   setState(() {
                     currentIndex = index;
-                    ref.read(currentIndexProvider.notifier).state = currentIndex;
+                    ref.read(currentIndexProvider.notifier).state =
+                        currentIndex;
                   });
                 },
                 items: const <BottomNavigationBarItem>[

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:menubar/menubar.dart';
 import 'package:movies/providers.dart';
 
 sealed class MenuEvent {}
@@ -60,6 +61,48 @@ class MenuManager {
           label: 'Search',
           onSelected: () => ref.read(eventBusProvider).fire(SearchEvent()),
           shortcut: const SingleActivator(LogicalKeyboardKey.keyS, meta: true)),
+    ]);
+  }
+
+  void createWindowsMenus() {
+    setApplicationMenu([
+      createWindowsMovieMenu(),
+      createWindowsOptionsMenu(),
+    ]);
+  }
+
+  NativeSubmenu createWindowsMovieMenu() {
+    return NativeSubmenu(label: 'Movies', children: [
+      NativeMenuItem(
+          label: 'Quit',
+          onSelected: () => ref.read(eventBusProvider).fire(QuitEvent()),
+          shortcut: LogicalKeySet(
+              LogicalKeyboardKey.control, LogicalKeyboardKey.keyQ)),
+    ]);
+  }
+
+  NativeSubmenu createWindowsOptionsMenu() {
+    return NativeSubmenu(label: 'Options', children: [
+      NativeMenuItem(
+          label: 'Home',
+          onSelected: () => ref.read(eventBusProvider).fire(HomeEvent()),
+          shortcut: LogicalKeySet(
+              LogicalKeyboardKey.control, LogicalKeyboardKey.keyH)),
+      NativeMenuItem(
+          label: 'Genre',
+          onSelected: () => ref.read(eventBusProvider).fire(GenreEvent()),
+          shortcut: LogicalKeySet(
+              LogicalKeyboardKey.control, LogicalKeyboardKey.keyG)),
+      NativeMenuItem(
+          label: 'Favorites',
+          onSelected: () => ref.read(eventBusProvider).fire(FavoritesEvent()),
+          shortcut: LogicalKeySet(
+              LogicalKeyboardKey.control, LogicalKeyboardKey.keyF)),
+      NativeMenuItem(
+          label: 'Search',
+          onSelected: () => ref.read(eventBusProvider).fire(SearchEvent()),
+          shortcut: LogicalKeySet(
+              LogicalKeyboardKey.control, LogicalKeyboardKey.keyS)),
     ]);
   }
 }

@@ -64,6 +64,12 @@ dependencies:
   event_bus: ^2.0.0
   desktop_window: ^0.4.0
   flutter_adaptive_scaffold: ^0.3.1
+  menubar:
+    git:
+      url: https://github.com/google/flutter-desktop-embedding
+      path: plugins/menubar
+      ref: 12decbe0f592e14e03223f6f2c0c7e0e2dbd70a1
+
 
 
 dev_dependencies:

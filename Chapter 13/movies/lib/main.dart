@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:colorize_lumberdash/colorize_lumberdash.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
@@ -38,18 +40,39 @@ class MainApp extends ConsumerStatefulWidget {
 }
 
 class _MainAppState extends ConsumerState<MainApp> {
+  var initialized = false;
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (initialized) {
+        return;
+      }
+      if (Platform.isWindows) {
+        final menuManager = ref.read(menuManagerProvider);
+        menuManager.createWindowsMenus();
+      }
+      initialized = true;
+    });
     final router = ref.watch(appRouterProvider);
     final menuManager = ref.watch(menuManagerProvider);
-    return PlatformMenuBar(
-      menus: menuManager.createMenus(),
-      child: MaterialApp.router(
+    if (isMac()) {
+      return PlatformMenuBar(
+        menus: menuManager.createMenus(),
+        child: MaterialApp.router(
+          routerConfig: router.config(),
+          title: 'Movies',
+          debugShowCheckedModeBanner: false,
+          theme: createTheme(),
+        ),
+      );
+    } else {
+      return MaterialApp.router(
         routerConfig: router.config(),
         title: 'Movies',
         debugShowCheckedModeBanner: false,
         theme: createTheme(),
-      ),
-    );
+      );
+    }
   }
 }
