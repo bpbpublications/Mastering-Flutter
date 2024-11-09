@@ -52,16 +52,6 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    MovieListingRoute.name: (routeData) {
-      final args = routeData.argsAs<MovieListingRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: MovieListing(
-          args.movieType,
-          key: args.key,
-        ),
-      );
-    },
     VideoPageRoute.name: (routeData) {
       final args = routeData.argsAs<VideoPageRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -167,44 +157,6 @@ class MovieDetailRouteArgs {
   @override
   String toString() {
     return 'MovieDetailRouteArgs{movieId: $movieId, key: $key}';
-  }
-}
-
-/// generated route for
-/// [MovieListing]
-class MovieListingRoute extends PageRouteInfo<MovieListingRouteArgs> {
-  MovieListingRoute({
-    required MovieType movieType,
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          MovieListingRoute.name,
-          args: MovieListingRouteArgs(
-            movieType: movieType,
-            key: key,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'MovieListingRoute';
-
-  static const PageInfo<MovieListingRouteArgs> page =
-      PageInfo<MovieListingRouteArgs>(name);
-}
-
-class MovieListingRouteArgs {
-  const MovieListingRouteArgs({
-    required this.movieType,
-    this.key,
-  });
-
-  final MovieType movieType;
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'MovieListingRouteArgs{movieType: $movieType, key: $key}';
   }
 }
 

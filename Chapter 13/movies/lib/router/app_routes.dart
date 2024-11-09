@@ -7,7 +7,6 @@ import 'package:movies/ui/screens/favorites/favorite_screen.dart';
 import 'package:movies/ui/screens/genres/genre_screen.dart';
 import 'package:movies/ui/screens/home/home_screen.dart';
 import 'package:movies/ui/screens/movie_detail/movie_detail.dart';
-import 'package:movies/ui/screens/movie_listing/movie_listing.dart';
 import 'package:movies/ui/screens/videos/video_page.dart';
 import 'package:movies/ui/widgets/movie_widget.dart';
 
@@ -33,12 +32,6 @@ class AppRouter extends _$AppRouter {
           page: VideoPageRoute.page,
           maintainState: false,
           transitionsBuilder: TransitionsBuilders.slideRight,
-          durationInMilliseconds: 500,
-        ),
-        CustomRoute(
-          page: MovieListingRoute.page,
-          maintainState: false,
-          transitionsBuilder: TransitionsBuilders.fadeIn,
           durationInMilliseconds: 500,
         ),
       ];

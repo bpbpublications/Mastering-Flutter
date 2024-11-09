@@ -22,7 +22,6 @@ class FavoriteRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final textWidth = screenWidth - 132;
     final imageUrl =
         movieViewModel.getImageUrl(ImageSize.small, favorite.posterPath);
     return GestureDetector(
@@ -47,55 +46,54 @@ class FavoriteRow extends StatelessWidget {
                   : emptyWidget,
             ),
             addHorizontalSpace(16),
-            Stack(
-              children: [
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: IconButton(
-                    onPressed: () => onFavoritesTap(favorite),
-                    icon: favorite.favorite
-                        ? const Icon(
-                            Icons.favorite_outlined,
-                            color: Colors.red,
-                          )
-                        : const Icon(
-                            Icons.favorite_border,
-                            color: Colors.white,
-                          ),
+            Expanded(
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: IconButton(
+                      onPressed: () => onFavoritesTap(favorite),
+                      icon: favorite.favorite
+                          ? const Icon(
+                              Icons.favorite_outlined,
+                              color: Colors.red,
+                            )
+                          : const Icon(
+                              Icons.favorite_border,
+                              color: Colors.white,
+                            ),
+                    ),
                   ),
-                ),
-                Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Spacer(),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: textWidth,
-                            child: AutoSizeText(
+                  Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Spacer(),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AutoSizeText(
                               favorite.title,
                               maxLines: 1,
                               minFontSize: 10,
                               style: Theme.of(context).textTheme.labelLarge,
                               overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                          addVerticalSpace(4),
-                          Text(
-                            yearFormat.format(favorite.releaseDate),
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          addVerticalSpace(4),
-                        ],
-                      ),
-                    ]),
-              ],
+                            addVerticalSpace(4),
+                            Text(
+                              yearFormat.format(favorite.releaseDate),
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            addVerticalSpace(4),
+                          ],
+                        ),
+                      ]),
+                ],
+              ),
             ),
           ],
         ),

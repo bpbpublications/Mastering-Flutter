@@ -1,4 +1,5 @@
 import 'package:lumberdash/lumberdash.dart';
+import 'package:movies/data/database/drift/database_interface.dart';
 import 'package:movies/data/database/models/favorite.dart';
 import 'package:movies/data/models/genre.dart';
 import 'package:movies/data/models/movie_configuration.dart';
@@ -7,11 +8,12 @@ import 'package:movies/data/models/movie_details.dart';
 import 'package:movies/data/models/movie_response.dart';
 import 'package:movies/data/models/movie_results.dart';
 import 'package:movies/data/models/movie_videos.dart';
-import 'package:movies/data/sources/movie_source.dart';
+import 'package:movies/network/movie_api_service.dart';
 import 'package:movies/utils/utils.dart';
 
 class MovieViewModel {
-  final MovieSource _movieRepository;
+  final MovieAPIService movieAPIService;
+  final IDatabase database;
   MovieConfiguration? movieConfiguration;
   List<Genre>? movieGenres;
   List<MovieResults> trendingMovies = [];
@@ -19,21 +21,30 @@ class MovieViewModel {
   List<MovieResults> popularMovies = [];
   List<MovieResults> nowPlayingMovies = [];
 
-  MovieViewModel(this._movieRepository);
+  MovieViewModel({required this.movieAPIService, required this.database});
 
   Future setup() async {
     await Future.wait([setupConfiguration(), setupGenres()]);
   }
 
   Future setupConfiguration() async {
-    final configuration = await _movieRepository.getMovieConfiguration();
-    if (configuration != null) {
-      movieConfiguration = configuration;
+    final response = await movieAPIService.getMovieConfiguration();
+    if (response.statusCode == 200) {
+      movieConfiguration = MovieConfiguration.fromJson(response.data);
+    } else {
+      logError(
+          'Failed to load genres with error ${response.statusCode} and message ${response.statusMessage}');
     }
   }
 
   Future setupGenres() async {
-    movieGenres = await _movieRepository.getGenres();
+    final response = await movieAPIService.getGenres();
+    if (response.statusCode == 200) {
+      movieGenres = Genres.fromJson(response.data).genres;
+    } else {
+      logError(
+          'Failed to load genres with error ${response.statusCode} and message ${response.statusMessage}');
+    }
   }
 
   String? getImageUrl(ImageSize size, String? file) {
@@ -45,72 +56,151 @@ class MovieViewModel {
   }
 
   Future saveFavorite(MovieDetails movieDetails) async {
-    _movieRepository.saveFavorite(movieDetails);
+    database.saveFavorite(DBFavorite(
+        id: movieDetails.id,
+        movieId: movieDetails.id,
+        backdropPath: movieDetails.backdropPath,
+        posterPath: movieDetails.posterPath,
+        favorite: true,
+        popularity: movieDetails.popularity,
+        releaseDate: movieDetails.releaseDate,
+        title: movieDetails.title,
+        overview: movieDetails.overview));
   }
 
   Future<bool> removeFavorite(int id) async {
-    return _movieRepository.removeFavorite(id);
+    return database.removeFavorite(id);
   }
 
   Future<List<DBFavorite>> getFavorites() async {
-    return _movieRepository.getFavorites();
+    return database.getFavorites();
   }
 
   Stream<List<DBFavorite>> streamFavorites() {
-    return _movieRepository.streamFavorites();
+    return database.streamFavorites();
   }
 
   Future<MovieResponse?> getTrendingMovies(int page) async {
-    final response = await _movieRepository.getTrending(page);
-    if (response != null) {
-      trendingMovies = response.results;
+    final response = await movieAPIService.getTrending(page);
+    if (response.statusCode == 200) {
+      var movieResponse = MovieResponse.fromJson(response.data);
+      trendingMovies = movieResponse.results;
+      return movieResponse;
+    } else {
+      logError(
+          'Failed to load movies with error ${response.statusCode} and message ${response.statusMessage}');
+      return null;
     }
-    return response;
   }
 
   Future<MovieResponse?> getPopular(int page) async {
-    final response = await _movieRepository.getPopular(page);
-    if (response != null) {
-      popularMovies = response.results;
+    final response = await movieAPIService.getPopular(page);
+    if (response.statusCode == 200) {
+      var movieResponse = MovieResponse.fromJson(response.data);
+      popularMovies = movieResponse.results;
+      return movieResponse;
+    } else {
+      logError(
+          'Failed to load movies with error ${response.statusCode} and message ${response.statusMessage}');
+      return null;
     }
-    return response;
   }
 
   Future<MovieResponse?> getTopRated(int page) async {
-    final response = await _movieRepository.getTopRated(page);
-    if (response != null) {
-      topRatedMovies = response.results;
+    final response = await movieAPIService.getTopRated(page);
+    if (response.statusCode == 200) {
+      var movieResponse = MovieResponse.fromJson(response.data);
+      topRatedMovies = movieResponse.results;
+      return movieResponse;
+    } else {
+      logError(
+          'Failed to load movies with error ${response.statusCode} and message ${response.statusMessage}');
+      return null;
     }
-    return response;
   }
 
   Future<MovieResponse?> getNowPlaying(int page) async {
-    final response = await _movieRepository.getNowPlaying(page);
-    if (response != null) {
-      nowPlayingMovies = response.results;
+    final response = await movieAPIService.getNowPlaying(page);
+    if (response.statusCode == 200) {
+      var movieResponse = MovieResponse.fromJson(response.data);
+      nowPlayingMovies = movieResponse.results;
+      return movieResponse;
+    } else {
+      logError(
+          'Failed to load movies with error ${response.statusCode} and message ${response.statusMessage}');
+      return null;
     }
-    return response;
   }
 
   Future<MovieDetails?> getMovieDetails(int movieId) async {
-    return _movieRepository.getMovieDetails(movieId);
+    final response = await movieAPIService.getMovieDetails(movieId);
+    if (response.statusCode == 200) {
+      try {
+        return MovieDetails.fromJson(response.data);
+      } catch (e) {
+        logError('Failed to parse movie details with error $e');
+        return null;
+      }
+    } else {
+      logError(
+          'Failed to load movie details with error ${response.statusCode} and message ${response.statusMessage}');
+      return null;
+    }
   }
 
-   Future<MovieVideos?> getMovieVideos(int movieId) async {
-    return _movieRepository.getMovieVideos(movieId);
+  Future<MovieVideos?> getMovieVideos(int movieId) async {
+    final response = await movieAPIService.getMovieVideos(movieId);
+    if (response.statusCode == 200) {
+      try {
+        return MovieVideos.fromJson(response.data);
+      } catch (e) {
+        logError('Failed to parse movie videos with error $e');
+        return null;
+      }
+    } else {
+      logError(
+          'Failed to load movie videos with error ${response.statusCode} and message ${response.statusMessage}');
+      return null;
+    }
   }
 
   Future<MovieCredits?> getMovieCredits(int movieId) async {
-    return _movieRepository.getMovieCredits(movieId);
+    final response = await movieAPIService.getMovieCredits(movieId);
+    if (response.statusCode == 200) {
+      try {
+        return MovieCredits.fromJson(response.data);
+      } catch (e) {
+        logError('Failed to parse movie credits with error $e');
+        return null;
+      }
+    } else {
+      logError(
+          'Failed to load movie credits with error ${response.statusCode} and message ${response.statusMessage}');
+      return null;
+    }
   }
 
- /// genres is a pipe delimited string
   Future<MovieResponse?> searchMoviesByGenre(String genres, int page) async {
-    return _movieRepository.searchMoviesByGenre(genres, page);
+    final response = await movieAPIService.searchMoviesByGenre(genres, page);
+    if (response.statusCode == 200) {
+      var movieResponse = MovieResponse.fromJson(response.data);
+      return movieResponse;
+    } else {
+      logError(
+          'Failed to load movies with error ${response.statusCode} and message ${response.statusMessage}');
+      return null;
+    }
   }
 
   Future<MovieResponse?> searchMovies(String searchText, int page) async {
-    return _movieRepository.searchMovies(searchText, page);
+    final response = await movieAPIService.searchMovies(searchText, page);
+    if (response.statusCode == 200) {
+      var movieResponse = MovieResponse.fromJson(response.data);
+      return movieResponse;
+    } else {
+      logError(
+          'Failed to load movies with error ${response.statusCode} and message ${response.statusMessage}');
+      return null;
+    }
   }
-
 }

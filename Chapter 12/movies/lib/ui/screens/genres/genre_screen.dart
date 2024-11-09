@@ -37,7 +37,7 @@ class _GenreScreenState extends ConsumerState<GenreScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final movieViewModelAsync = ref.read(movieViewModelProvider);
+    final movieViewModelAsync = ref.watch(movieViewModelProvider);
     return movieViewModelAsync.when(
       error: (e, st) => Text(e.toString()),
       loading: () => const NotReady(),

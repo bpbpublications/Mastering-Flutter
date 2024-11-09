@@ -49,7 +49,7 @@ class MovieViewModel {
 
   String? getImageUrl(ImageSize size, String? file) {
     if (file == null || movieConfiguration == null) {
-      logMessage('movieConfiguration is null for getImageUrl file: $file');
+      logMessage('getImageUrl file: $file');
       return null;
     }
     return getSizedImageUrl(size, movieConfiguration!, file);

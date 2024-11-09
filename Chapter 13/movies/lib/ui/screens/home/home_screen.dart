@@ -59,14 +59,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         child: Text('Now Playing', style: largeTitle)),
                   ),
                   HomeScreenImage(
-                    movieViewModel: movieViewModel,
-                    onMovieTap: onMovieTap,
-                  ),
+                      movieViewModel: movieViewModel,
+                      onMovieTap: (movieId) {
+                        context.router.push(MovieDetailRoute(movieId: movieId));
+                      }),
                   TitleRow(
                     text: 'Trending',
                     onMoreClicked: () {
-                      context.router.push(
-                          MovieListingRoute(movieType: MovieType.trending));
                     },
                   ),
                   HorizontalMovies(
@@ -77,8 +76,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   TitleRow(
                     text: 'Popular',
                     onMoreClicked: () {
-                      context.router.push(
-                          MovieListingRoute(movieType: MovieType.popular));
                     },
                   ),
                   HorizontalMovies(
@@ -89,8 +86,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   TitleRow(
                     text: 'Top Rated',
                     onMoreClicked: () {
-                      context.router.push(
-                          MovieListingRoute(movieType: MovieType.topRated));
                     },
                   ),
                   HorizontalMovies(

@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
+import 'package:movies/data/database/drift/connection.dart' as impl;
 
 part 'movie_database.g.dart';
 
@@ -53,7 +54,7 @@ class DriftGenre extends Table {
   tables: [DriftFavorite, DriftConfigurationImages, DriftGenre],
 )
 class MovieDatabase extends _$MovieDatabase {
-  MovieDatabase() : super(driftDatabase(name: 'Movies'));
+  MovieDatabase() : super(impl.connect());
 
   @override
   int get schemaVersion => 1;
