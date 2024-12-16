@@ -34,6 +34,10 @@ migrate_working_dir/
 **/linux/flutter/
 **/macos/Flutter/
 **/windows/flutter/
+**/.firebase/
+**/firebase.json
+**/**/lib/firebase_options.dart
+**/google-services.json
 
 # Symbolication related
 app.*.symbols

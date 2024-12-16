@@ -1,0 +1,43 @@
+name: movie_data
+description: "A new Flutter package project."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ^3.5.3
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  lumberdash: ^3.0.0
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+  collection: ^1.17.1
+  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.1
+  dio: ^5.4.3+1
+  shared_preferences: ^2.2.3
+  intl: ^0.18.1
+  drift: ^2.20.2
+  drift_flutter: ^0.2.0
+  sqlite3_flutter_libs: ^0.5.24
+  firebase_core: ^3.6.0
+  cloud_firestore: ^5.4.4
+  firebase_auth: ^5.3.1
+  google_sign_in: ^6.2.1
+  path_provider: ^2.1.5
+  path: ^1.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.8
+  riverpod_generator: ^2.4.0
+  riverpod_lint: ^2.3.5
+  json_serializable: ^6.7.1
+  freezed: ^2.4.7
+  drift_dev: ^2.20.3
+
+flutter:
