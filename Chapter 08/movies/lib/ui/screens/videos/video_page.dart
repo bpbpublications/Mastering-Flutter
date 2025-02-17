@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pod_player/pod_player.dart';
 
-import '../../../utils/utils.dart';
-import '../../theme/theme.dart';
+import 'package:movies/utils/utils.dart';
+import 'package:movies/ui/theme/theme.dart';
 
 @RoutePage(name: 'VideoPageRoute')
 class VideoPage extends ConsumerStatefulWidget {

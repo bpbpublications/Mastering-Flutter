@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../providers.dart';
+import 'package:movies/providers.dart';
 import 'movie_row.dart';
 
 typedef OnMovieTap = void Function(int movieId);

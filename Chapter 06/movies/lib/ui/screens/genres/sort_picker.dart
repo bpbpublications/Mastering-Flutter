@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../utils/utils.dart';
+import 'package:movies/utils/utils.dart';
 
 typedef OnSortSelected = void Function(Sorting);
 

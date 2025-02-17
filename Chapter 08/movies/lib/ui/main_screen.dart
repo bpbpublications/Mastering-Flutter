@@ -1,12 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:movies/ui/screens/home/home_screen.dart';
 
-import '../router/app_routes.dart';
-import 'screens/genres/genre_screen.dart';
-import 'screens/videos/video_page.dart';
-import 'theme/theme.dart';
+import 'package:movies/router/app_routes.dart';
+import 'package:movies/ui/theme/theme.dart';
 
 @RoutePage()
 class MainScreen extends StatefulWidget {

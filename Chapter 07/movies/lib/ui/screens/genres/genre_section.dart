@@ -3,7 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../theme/theme.dart';
+import 'package:movies/ui/theme/theme.dart';
 
 class GenreState {
   final String genre;

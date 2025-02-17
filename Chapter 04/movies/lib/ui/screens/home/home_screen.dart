@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies/ui/screens/home/title_row.dart';
 
-import 'home_screen_image.dart';
-import 'horiz_movies.dart';
+import 'package:movies/ui/screens/home/home_screen_image.dart';
+import 'package:movies/ui/screens/home/horiz_movies.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,11 +18,11 @@ class _HomeScreenState extends State<HomeScreen> {
       SafeArea(
       child: SingleChildScrollView(
         child: Container(
-          color: Color(0xFF111111),
+          color: const Color(0xFF111111),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 16.0, 0, 24),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(0, 16.0, 0, 24),
                 child: Align(
                     alignment: Alignment.center,
                     child: Text('Now Playing', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),)),
@@ -33,20 +33,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 onMoreClicked: () {
                 },
               ),
-              HorizontalMovies(movies: images,),
+              const HorizontalMovies(movies: images,),
               TitleRow(
                 text: 'Popular',
                 onMoreClicked: () {
                 },
               ),
-              HorizontalMovies(movies: images,),
+              const HorizontalMovies(movies: images,),
               TitleRow(
                 text: 'Top Rated',
                 onMoreClicked: () {
                 },
               ),
-              HorizontalMovies(movies: images,),
-
+              const HorizontalMovies(movies: images,),
+        
             ],
           ),
         ),

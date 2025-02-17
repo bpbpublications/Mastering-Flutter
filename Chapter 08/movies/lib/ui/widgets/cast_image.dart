@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/utils.dart';
-import '../theme/theme.dart';
+import 'package:movies/utils/utils.dart';
+import 'package:movies/ui/theme/theme.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class CastImage extends StatelessWidget {

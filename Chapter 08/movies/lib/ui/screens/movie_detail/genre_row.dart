@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/theme.dart';
-import '../genres/genre_section.dart';
+import 'package:movies/ui/theme/theme.dart';
+import 'package:movies/ui/screens/genres/genre_section.dart';
 
 class GenreRow extends StatelessWidget {
   final List<GenreState> genres;

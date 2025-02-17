@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:movies/ui/screens/home/home_screen.dart';
 
-import 'screens/genres/genre_screen.dart';
+import 'package:movies/ui/screens/genres/genre_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

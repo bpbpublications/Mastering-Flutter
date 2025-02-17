@@ -2,15 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../providers.dart';
-import '../../../router/app_routes.dart';
-import '../../theme/theme.dart';
-import '../../widgets/horiz_cast.dart';
-import 'button_row.dart';
-import 'detail_image.dart';
-import 'genre_row.dart';
-import 'movie_overview.dart';
-import 'trailer.dart';
+import 'package:movies/providers.dart';
+import 'package:movies/router/app_routes.dart';
+import 'package:movies/ui/theme/theme.dart';
+import 'package:movies/ui/widgets/horiz_cast.dart';
+import 'package:movies/ui/screens/movie_detail/button_row.dart';
+import 'package:movies/ui/screens/movie_detail/detail_image.dart';
+import 'package:movies/ui/screens/movie_detail/genre_row.dart';
+import 'package:movies/ui/screens/movie_detail/trailer.dart';
 
 @RoutePage(name: 'MovieDetailRoute')
 class MovieDetail extends ConsumerStatefulWidget {
@@ -53,7 +52,7 @@ class _MovieDetailState extends ConsumerState<MovieDetail> {
                     delegate: SliverChildListDelegate([
                       Stack(children: [DetailImage()]),
                       GenreRow(genres: genres),
-                      MovieOverview(
+                      const MovieOverview(
                           details:
                               'Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, Paul endeavors to prevent a terrible future only he can foresee.'),
                       ValueListenableBuilder<bool>(
@@ -78,7 +77,7 @@ class _MovieDetailState extends ConsumerState<MovieDetail> {
                         child: Text('Trailers', style: Theme.of(context).textTheme.headlineLarge),
                       ),
                       Trailer(
-                        movieVideos: ['https://img.youtube.com/vi/U2Qp5pL3ovA/hqdefault.jpg'],
+                        movieVideos: const ['https://img.youtube.com/vi/U2Qp5pL3ovA/hqdefault.jpg'],
                         onVideoTap: (video) {
                           context.router
                               .push(VideoPageRoute(movieVideo: 'U2Qp5pL3ovA'));
@@ -88,7 +87,7 @@ class _MovieDetailState extends ConsumerState<MovieDetail> {
                     ]
                     ),
                   ),
-                  HorizontalCast(castList: ['', '']),
+                  const HorizontalCast(castList: ['', '']),
                 ]),
               )
             ],
