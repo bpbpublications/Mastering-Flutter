@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "movies-new-1",
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-west1"
+    }
+  }
+}
