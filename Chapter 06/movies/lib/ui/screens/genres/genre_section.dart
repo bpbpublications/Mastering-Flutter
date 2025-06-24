@@ -33,9 +33,14 @@ class GenreSection extends ConsumerStatefulWidget {
 }
 
 class _GenreSectionState extends ConsumerState<GenreSection> {
+  List<Widget> chips = [];
+
   @override
   Widget build(BuildContext context) {
-    final genreChips = getGenreChips();
+    if (chips.isEmpty) {
+      chips = getGenreChips();
+    }
+
     return ExpansionPanelList(
       expandIconColor: Colors.white,
       expansionCallback: (int index, bool expanded) {
@@ -74,12 +79,10 @@ class _GenreSectionState extends ConsumerState<GenreSection> {
               ),
             );
           },
-          body: Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: genreChips,
-            )
+          body: Wrap(
+              spacing: 16.0,
+              runSpacing: 4.0,
+              children: chips,
           ),
         )
       ],
@@ -90,9 +93,10 @@ class _GenreSectionState extends ConsumerState<GenreSection> {
     return widget.genreStates.mapIndexed((index, element) {
       final genreState = widget.genreStates[index];
       return FilterChip(
+        key: ValueKey(genreState),
         backgroundColor: searchBarBackground,
         selectedColor: buttonGrey,
-        label: AutoSizeText(genreState.genre,
+        label: Text(genreState.genre,
             style: Theme.of(context).textTheme.labelSmall),
         selected: widget.genreStates[index].isSelected,
         onSelected: (selected) {
