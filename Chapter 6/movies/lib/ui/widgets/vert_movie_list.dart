@@ -19,15 +19,18 @@ class VerticalMovieList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    if (movies.isEmpty) {
+      return const SizedBox.shrink();
+    }
     return Column(
       children: [
-        MovieRow(
+        movies.length > 1 ? MovieRow(
           movie: movies[0],
-        ),
+        ) : const SizedBox.shrink(),
         addVerticalSpace(10),
-        MovieRow(
+        movies.length > 2 ? MovieRow(
           movie: movies[1],
-        ),
+        ) : const SizedBox.shrink(),
       ],
     );
   }
