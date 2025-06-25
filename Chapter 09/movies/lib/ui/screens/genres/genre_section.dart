@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,9 +32,13 @@ class GenreSection extends ConsumerStatefulWidget {
 }
 
 class _GenreSectionState extends ConsumerState<GenreSection> {
+  List<Widget> chips = [];
+
   @override
   Widget build(BuildContext context) {
-    final genreChips = getGenreChips();
+    if (chips.isEmpty) {
+      chips = getGenreChips();
+    }
     return SliverList(
         delegate: SliverChildListDelegate([
       ExpansionPanelList(
@@ -80,14 +83,14 @@ class _GenreSectionState extends ConsumerState<GenreSection> {
               padding: const EdgeInsets.only(left: 16.0, right: 16),
               child: GridView.builder(
                 shrinkWrap: true,
-                itemCount: genreChips.length,
+                itemCount: chips.length,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 100,
                     crossAxisSpacing: 16,
                     childAspectRatio: 1.5,
                     mainAxisSpacing: 0),
                 itemBuilder: (BuildContext context, int index) {
-                  return genreChips[index];
+                  return chips[index];
                 },
               ),
             ),
@@ -103,7 +106,7 @@ class _GenreSectionState extends ConsumerState<GenreSection> {
       return FilterChip(
         backgroundColor: searchBarBackground,
         selectedColor: buttonGrey,
-        label: AutoSizeText(genreState.genre,
+        label: Text(genreState.genre,
             style: Theme.of(context).textTheme.labelSmall),
         selected: widget.genreStates[index].isSelected,
         onSelected: (selected) {
