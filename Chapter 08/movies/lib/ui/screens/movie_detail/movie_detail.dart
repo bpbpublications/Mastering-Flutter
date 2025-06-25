@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:movies/providers.dart';
 import 'package:movies/router/app_routes.dart';
+import 'package:movies/ui/screens/movie_detail/movie_overview.dart';
 import 'package:movies/ui/theme/theme.dart';
 import 'package:movies/ui/widgets/horiz_cast.dart';
 import 'package:movies/ui/screens/movie_detail/button_row.dart';

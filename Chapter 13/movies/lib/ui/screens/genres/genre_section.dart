@@ -27,9 +27,13 @@ class GenreSection extends ConsumerStatefulWidget {
 }
 
 class _GenreSectionState extends ConsumerState<GenreSection> {
+  List<Widget> chips = [];
+
   @override
   Widget build(BuildContext context) {
-    final genreChips = getGenreChips();
+    if (chips.isEmpty) {
+      chips = getGenreChips();
+    }
     return SliverList(
         delegate: SliverChildListDelegate([
       ExpansionPanelList(
@@ -75,14 +79,14 @@ class _GenreSectionState extends ConsumerState<GenreSection> {
               child: GridView.builder(
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(0.0),
-                itemCount: genreChips.length,
+                itemCount: chips.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 0,
                     childAspectRatio: 2.2,
                     mainAxisSpacing: 0),
                 itemBuilder: (BuildContext context, int index) {
-                  return genreChips[index];
+                  return chips[index];
                 },
               ),
             ),
