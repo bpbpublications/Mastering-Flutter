@@ -1,19 +1,16 @@
 import 'package:event_bus/event_bus.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lumberdash/lumberdash.dart';
 import 'package:movie_data/movie_data.dart';
 import 'package:movie_plugin/movie_plugin.dart';
 import 'package:movies/firebase_options.dart';
+import 'package:movies/router/app_routes.dart';
 import 'package:movies/ui/menus.dart';
+import 'package:movies/ui/movie_viewmodel.dart';
 import 'package:movies/utils/prefs.dart';
 import 'package:movies/utils/utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import 'package:movies/router/app_routes.dart';
-import 'package:movies/ui/movie_viewmodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'providers.g.dart';
@@ -79,7 +76,7 @@ Future<MovieSource> networkMovieSource(NetworkMovieSourceRef ref) async {
 
 @Riverpod(keepAlive: true)
 Future<MovieSource> movieRepository(MovieRepositoryRef ref) async {
-  final database = await ref.watch(databaseProvider.future);
+  final database = ref.watch(databaseProvider);
   final serviceFuture = ref.watch(networkMovieSourceProvider.future);
   return MovieRepository(
       await serviceFuture, database);
@@ -111,21 +108,20 @@ MoviePlugin moviePlugin(MoviePluginRef ref) {
 AppRouter appRouter(AppRouterRef ref) => AppRouter();
 
 @Riverpod(keepAlive: true)
-Future<IDatabase> database(DatabaseRef ref) {
+IDatabase database(DatabaseRef ref) {
   // Change this to what we want to use
   // final driftFuture = ref.watch(driftDatabaseProvider.future);
   // return driftFuture;
-  final firebaseFuture = ref.watch(firebaseProvider.future);
-  return firebaseFuture;
+  return ref.read(firebaseProvider);
 }
 
 @Riverpod(keepAlive: true)
-Future<IDatabase> firebase(FirebaseRef ref) async {
+IDatabase firebase(FirebaseRef ref) {
   return FirebaseDatabase(DefaultFirebaseOptions.currentPlatform);
 }
 
 @Riverpod(keepAlive: true)
-Future<IDatabase> driftDatabase(DriftDatabaseRef ref) {
-  return Future.value(DriftDatabase());
+IDatabase driftDatabase(DriftDatabaseRef ref) {
+  return DriftDatabase();
 }
 

@@ -151,11 +151,11 @@ final appRouterProvider = Provider<AppRouter>.internal(
 );
 
 typedef AppRouterRef = ProviderRef<AppRouter>;
-String _$databaseHash() => r'3b10f3d1f950d07183a926c4582b968e456056ba';
+String _$databaseHash() => r'1bc23d9283281c92738a42e40c070e57a6ee775b';
 
 /// See also [database].
 @ProviderFor(database)
-final databaseProvider = FutureProvider<IDatabase>.internal(
+final databaseProvider = Provider<IDatabase>.internal(
   database,
   name: r'databaseProvider',
   debugGetCreateSourceHash:
@@ -164,12 +164,12 @@ final databaseProvider = FutureProvider<IDatabase>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef DatabaseRef = FutureProviderRef<IDatabase>;
-String _$firebaseHash() => r'410d85e3a6f634a33af6eb8099f82249bbde3790';
+typedef DatabaseRef = ProviderRef<IDatabase>;
+String _$firebaseHash() => r'a10e964d431a83d2b0af23ec8da3430dcf9106c4';
 
 /// See also [firebase].
 @ProviderFor(firebase)
-final firebaseProvider = FutureProvider<IDatabase>.internal(
+final firebaseProvider = Provider<IDatabase>.internal(
   firebase,
   name: r'firebaseProvider',
   debugGetCreateSourceHash:
@@ -178,12 +178,12 @@ final firebaseProvider = FutureProvider<IDatabase>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef FirebaseRef = FutureProviderRef<IDatabase>;
-String _$driftDatabaseHash() => r'57a57a8cafbbaed5eca1bc2581913e5f1546089a';
+typedef FirebaseRef = ProviderRef<IDatabase>;
+String _$driftDatabaseHash() => r'20e6fcc4769d26ebdbf6821e58b83d4f5a6e1951';
 
 /// See also [driftDatabase].
 @ProviderFor(driftDatabase)
-final driftDatabaseProvider = FutureProvider<IDatabase>.internal(
+final driftDatabaseProvider = Provider<IDatabase>.internal(
   driftDatabase,
   name: r'driftDatabaseProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -193,6 +193,6 @@ final driftDatabaseProvider = FutureProvider<IDatabase>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef DriftDatabaseRef = FutureProviderRef<IDatabase>;
+typedef DriftDatabaseRef = ProviderRef<IDatabase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
