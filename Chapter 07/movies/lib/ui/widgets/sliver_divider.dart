@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movies/ui/theme/theme.dart';
 
-import '../theme/theme.dart';
 
 class SliverDivider extends StatelessWidget {
   const SliverDivider({super.key});

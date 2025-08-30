@@ -29,6 +29,8 @@ const images = [
 ];
 
 class HomeScreenImage extends StatelessWidget {
+  const HomeScreenImage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width - 32;

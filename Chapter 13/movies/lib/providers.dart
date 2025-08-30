@@ -27,21 +27,21 @@ final currentIndexProvider = StateProvider<int>((ref) {
 
 
 @Riverpod(keepAlive: true)
-MenuManager menuManager(MenuManagerRef ref) => MenuManager(ref);
+MenuManager menuManager(Ref ref) => MenuManager(ref);
 
 @Riverpod(keepAlive: true)
-EventBus eventBus(EventBusRef ref) => EventBus();
+EventBus eventBus(Ref ref) => EventBus();
 
 @Riverpod(keepAlive: true)
-Future<MovieAPIService> movieAPIService(MovieAPIServiceRef ref) async {
+Future<MovieAPIService> movieAPIService(Ref ref) async {
   final service = MovieAPIService();
   await service.init();
   return service;
 }
 
 @Riverpod(keepAlive: true)
-Future<MovieViewModel> movieViewModel(MovieViewModelRef ref) async {
-  final database = await ref.read(driftDatabaseProvider.future);
+Future<MovieViewModel> movieViewModel(Ref ref) async {
+  final database = ref.read(databaseProvider);
   final service = await ref.read(movieAPIServiceProvider.future);
   final model = MovieViewModel(database: database, movieAPIService: service);
   await model.setup();
@@ -49,20 +49,19 @@ Future<MovieViewModel> movieViewModel(MovieViewModelRef ref) async {
 }
 
 @Riverpod(keepAlive: true)
-Future<SharedPreferences> sharedPrefs(SharedPrefsRef ref) =>
+Future<SharedPreferences> sharedPrefs(Ref ref) =>
     SharedPreferences.getInstance();
 
 @Riverpod(keepAlive: true)
-Future<Prefs> prefs(PrefsRef ref) async {
+Future<Prefs> prefs(Ref ref) async {
   final sharedPrefs = await ref.read(sharedPrefsProvider.future);
   return Prefs(sharedPrefs);
 }
 
 @Riverpod(keepAlive: true)
-AppRouter appRouter(AppRouterRef ref) => AppRouter();
+AppRouter appRouter(Ref ref) => AppRouter();
 
 @Riverpod(keepAlive: true)
-Future<IDatabase> driftDatabase(DriftDatabaseRef ref) {
-  return Future.value(DriftDatabase());
+IDatabase database(Ref ref) {
+  return DriftDatabase();
 }
-

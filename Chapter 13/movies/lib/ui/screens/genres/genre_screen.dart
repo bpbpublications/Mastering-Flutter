@@ -68,6 +68,7 @@ class _GenreScreenState extends ConsumerState<GenreScreen> {
       search();
     }
     return SafeArea(
+      bottom: false,
       child: Container(
         color: screenBackground,
         child: Column(
@@ -117,8 +118,9 @@ class _GenreScreenState extends ConsumerState<GenreScreen> {
                               saveSelectedGenres();
                               currentMovieResponse = null;
                             });
-                      }),
-                  const SliverDivider(),
+                      },
+                    ),
+                    const SliverDivider(),
                     SortPicker(
                         useSliver: true,
                         onSortSelected: (sorting) {

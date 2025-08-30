@@ -120,7 +120,6 @@ class FirebaseDatabase implements IDatabase {
   @override
   Future saveMovieConfiguration(DBConfiguration configuration) {
     final configJson = configuration.toJson();
-    print(configJson);
     configurationCollection.add(configJson);
     return Future.value(null);
   }

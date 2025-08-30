@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       backgroundColor: screenBackground,
-      routes: [
+      routes: const [
         HomeRoute(),
         GenreRoute(),
         FavoriteRoute(),

@@ -68,6 +68,7 @@ class _GenreScreenState extends ConsumerState<GenreScreen> {
       search();
     }
     return SafeArea(
+      bottom: false,
       child: Container(
         color: screenBackground,
         child: Column(
@@ -229,7 +230,7 @@ class _GenreScreenState extends ConsumerState<GenreScreen> {
 
   void getSelectedGenres() async {
     final prefs = await ref.read(prefsProvider.future);
-    final genreNameList = prefs.getString(genreStringKey)?.split(',');
+    var genreNameList = (prefs.getString(genreStringKey))?.split(',');
     if (genreNameList?.isNotEmpty == true) {
       for (final genreName in genreNameList!) {
         var genreState = genreStates

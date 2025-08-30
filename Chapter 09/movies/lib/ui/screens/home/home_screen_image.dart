@@ -12,7 +12,7 @@ const animationTime = 1000;
 class HomeScreenImage extends ConsumerWidget {
   final OnMovieTap onMovieTap;
 
-  HomeScreenImage({super.key, required this.onMovieTap});
+  const HomeScreenImage({super.key, required this.onMovieTap});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,11 +29,11 @@ class HomeScreenImage extends ConsumerWidget {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              ref.read(heroTagProvider.notifier).state = movies[index] + 'swiper';
+              ref.read(heroTagProvider.notifier).state = '${movies[index]}swiper';
               onMovieTap(index);
             },
             child: Hero(
-              tag: movies[index] + 'swiper',
+              tag: '${movies[index]}swiper',
               child: CachedNetworkImage(
                 imageUrl: movies[index],
                 alignment: Alignment.topCenter,

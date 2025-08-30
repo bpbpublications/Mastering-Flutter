@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.center,
                     child: Text('Now Playing', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),)),
               ),
-              HomeScreenImage(),
+              const HomeScreenImage(),
               TitleRow(
                 text: 'Trending',
                 onMoreClicked: () {

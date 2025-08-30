@@ -51,7 +51,7 @@ class _MovieDetailState extends ConsumerState<MovieDetail> {
                 child: CustomScrollView(slivers: [
                   SliverList(
                     delegate: SliverChildListDelegate([
-                      Stack(children: [DetailImage()]),
+                      const Stack(children: [DetailImage()]),
                       GenreRow(genres: genres),
                       const MovieOverview(
                           details:

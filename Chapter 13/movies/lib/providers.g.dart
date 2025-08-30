@@ -6,7 +6,7 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$menuManagerHash() => r'7fd6df356b19455d7c8aeee8ee257dd1d2b07b22';
+String _$menuManagerHash() => r'a9e8709df311fbd3964678108faded0081f21705';
 
 /// See also [menuManager].
 @ProviderFor(menuManager)
@@ -20,7 +20,7 @@ final menuManagerProvider = Provider<MenuManager>.internal(
 );
 
 typedef MenuManagerRef = ProviderRef<MenuManager>;
-String _$eventBusHash() => r'845507b56a22aaf35039ce02c7da5a89847803a8';
+String _$eventBusHash() => r'9f379482073cc2c43036ff2e369cba327a87d7bb';
 
 /// See also [eventBus].
 @ProviderFor(eventBus)
@@ -34,7 +34,7 @@ final eventBusProvider = Provider<EventBus>.internal(
 );
 
 typedef EventBusRef = ProviderRef<EventBus>;
-String _$movieAPIServiceHash() => r'2aaa3e686d35a0d0e5f8ab8d2e6528cdc1b3d6b2';
+String _$movieAPIServiceHash() => r'0086101593f73d58b3688aa93f9362fe17e74bad';
 
 /// See also [movieAPIService].
 @ProviderFor(movieAPIService)
@@ -49,7 +49,7 @@ final movieAPIServiceProvider = FutureProvider<MovieAPIService>.internal(
 );
 
 typedef MovieAPIServiceRef = FutureProviderRef<MovieAPIService>;
-String _$movieViewModelHash() => r'9b490423e589b860aeeabe341b9d309ec62cf41d';
+String _$movieViewModelHash() => r'8f718757d70f5083b96608282162a96a7562dcba';
 
 /// See also [movieViewModel].
 @ProviderFor(movieViewModel)
@@ -64,7 +64,7 @@ final movieViewModelProvider = FutureProvider<MovieViewModel>.internal(
 );
 
 typedef MovieViewModelRef = FutureProviderRef<MovieViewModel>;
-String _$sharedPrefsHash() => r'0ebc135ba0bea1685cfcb6d3e19119eec07a339a';
+String _$sharedPrefsHash() => r'eba279b4efb2d4ef41070faedd17991e4ffd9384';
 
 /// See also [sharedPrefs].
 @ProviderFor(sharedPrefs)
@@ -78,7 +78,7 @@ final sharedPrefsProvider = FutureProvider<SharedPreferences>.internal(
 );
 
 typedef SharedPrefsRef = FutureProviderRef<SharedPreferences>;
-String _$prefsHash() => r'17cdb26eee576ff65fcfde9a84ac9146206202ba';
+String _$prefsHash() => r'286d5a6891847e65488b246f20ce8495331773ef';
 
 /// See also [prefs].
 @ProviderFor(prefs)
@@ -92,7 +92,7 @@ final prefsProvider = FutureProvider<Prefs>.internal(
 );
 
 typedef PrefsRef = FutureProviderRef<Prefs>;
-String _$appRouterHash() => r'42599edccdcfb58d05fc5c5c1776f848db2a5b20';
+String _$appRouterHash() => r'fc1228daa214cc1ad475cfdeafc6db36a6a237b5';
 
 /// See also [appRouter].
 @ProviderFor(appRouter)
@@ -106,20 +106,19 @@ final appRouterProvider = Provider<AppRouter>.internal(
 );
 
 typedef AppRouterRef = ProviderRef<AppRouter>;
-String _$driftDatabaseHash() => r'57a57a8cafbbaed5eca1bc2581913e5f1546089a';
+String _$databaseHash() => r'bba61741016d3018a696d159310eff9c65620f9d';
 
-/// See also [driftDatabase].
-@ProviderFor(driftDatabase)
-final driftDatabaseProvider = FutureProvider<IDatabase>.internal(
-  driftDatabase,
-  name: r'driftDatabaseProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$driftDatabaseHash,
+/// See also [database].
+@ProviderFor(database)
+final databaseProvider = Provider<IDatabase>.internal(
+  database,
+  name: r'databaseProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$databaseHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef DriftDatabaseRef = FutureProviderRef<IDatabase>;
+typedef DatabaseRef = ProviderRef<IDatabase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -13,7 +13,7 @@ import 'package:movies/ui/theme/theme.dart';
 import 'package:movies/providers.dart';
 import 'package:movies/utils/utils.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:movies/firebase_options.dart';
 
 /// This is the main entry point for Flutter
 /// Use the runApp method to start your app

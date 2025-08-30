@@ -1,8 +1,8 @@
 import 'package:event_bus/event_bus.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lumberdash/lumberdash.dart';
 import 'package:movie_data/movie_data.dart';
 import 'package:movies/firebase_options.dart';
 import 'package:movies/ui/menus.dart';
@@ -64,7 +64,7 @@ Future<String> webLoad() async {
       apiKey = dotEnvString;
     }
   } catch (e) {
-    print(e);
+    logError(e);
   }
   return apiKey;
 }
@@ -77,7 +77,7 @@ Future<MovieSource> networkMovieSource(NetworkMovieSourceRef ref) async {
 
 @Riverpod(keepAlive: true)
 Future<MovieSource> movieRepository(MovieRepositoryRef ref) async {
-  final database = await ref.watch(databaseProvider.future);
+  final database = ref.watch(databaseProvider);
   final serviceFuture = ref.watch(networkMovieSourceProvider.future);
   return MovieRepository(
       await serviceFuture, database);
@@ -105,19 +105,18 @@ Future<Prefs> prefs(PrefsRef ref) async {
 AppRouter appRouter(AppRouterRef ref) => AppRouter();
 
 @Riverpod(keepAlive: true)
-Future<IDatabase> database(DatabaseRef ref) {
+IDatabase database(DatabaseRef ref) {
   // Change this to what we want to use
-  final firebaseFuture = ref.watch(firebaseProvider.future);
-  return firebaseFuture;
+  return ref.read(firebaseProvider);
 }
 
 @Riverpod(keepAlive: true)
-Future<IDatabase> firebase(FirebaseRef ref) async {
+IDatabase firebase(FirebaseRef ref) {
   return FirebaseDatabase(DefaultFirebaseOptions.currentPlatform);
 }
 
 @Riverpod(keepAlive: true)
-Future<IDatabase> driftDatabase(DriftDatabaseRef ref) {
-  return Future.value(DriftDatabase());
+IDatabase driftDatabase(DriftDatabaseRef ref) {
+  return DriftDatabase();
 }
 

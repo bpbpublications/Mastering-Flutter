@@ -35,6 +35,7 @@ class _MovieListingState extends ConsumerState<MovieListing> {
   MovieResponse? currentMovieResponse;
   final PagingController<int, MovieResults> _pagingController =
       PagingController(firstPageKey: 0);
+  final _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -42,6 +43,12 @@ class _MovieListingState extends ConsumerState<MovieListing> {
     _pagingController.addPageRequestListener((pageKey) {
       loadMovies();
     });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -92,6 +99,7 @@ class _MovieListingState extends ConsumerState<MovieListing> {
                   Expanded(
                     child: PagedListView<int, MovieResults>(
                       pagingController: _pagingController,
+                      scrollController: _scrollController,
                       builderDelegate: PagedChildBuilderDelegate<MovieResults>(
                         itemBuilder: (context, item, index) => MovieRow(
                             movie: item,

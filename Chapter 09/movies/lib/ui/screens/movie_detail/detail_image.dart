@@ -7,7 +7,7 @@ import 'package:movies/utils/utils.dart';
 
 class DetailImage extends ConsumerStatefulWidget {
   final String movieUrl;
-  DetailImage({required this.movieUrl, super.key});
+  const DetailImage({required this.movieUrl, super.key});
 
   @override
   ConsumerState<DetailImage> createState() => _DetailImageState();

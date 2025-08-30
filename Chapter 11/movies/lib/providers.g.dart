@@ -6,11 +6,11 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$movieAPIServiceHash() => r'023c50e3f209269edd43e320e34e33ec7bbe2a85';
+String _$movieAPIServiceHash() => r'1fcc456233061aa0ae60254828e4d2e61c6ba3cf';
 
 /// See also [movieAPIService].
 @ProviderFor(movieAPIService)
-final movieAPIServiceProvider = AutoDisposeProvider<MovieAPIService>.internal(
+final movieAPIServiceProvider = Provider<MovieAPIService>.internal(
   movieAPIService,
   name: r'movieAPIServiceProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -20,13 +20,12 @@ final movieAPIServiceProvider = AutoDisposeProvider<MovieAPIService>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef MovieAPIServiceRef = AutoDisposeProviderRef<MovieAPIService>;
-String _$movieViewModelHash() => r'55fce40008d2e9f3dac256689df298c499709a86';
+typedef MovieAPIServiceRef = ProviderRef<MovieAPIService>;
+String _$movieViewModelHash() => r'391332b31ebd14a673e656f93321ac7c0c2dfdc2';
 
 /// See also [movieViewModel].
 @ProviderFor(movieViewModel)
-final movieViewModelProvider =
-    AutoDisposeFutureProvider<MovieViewModel>.internal(
+final movieViewModelProvider = FutureProvider<MovieViewModel>.internal(
   movieViewModel,
   name: r'movieViewModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -36,12 +35,12 @@ final movieViewModelProvider =
   allTransitiveDependencies: null,
 );
 
-typedef MovieViewModelRef = AutoDisposeFutureProviderRef<MovieViewModel>;
-String _$appRouterHash() => r'e7117babaf66aac31d3a18df675491079a51eb60';
+typedef MovieViewModelRef = FutureProviderRef<MovieViewModel>;
+String _$appRouterHash() => r'fc1228daa214cc1ad475cfdeafc6db36a6a237b5';
 
 /// See also [appRouter].
 @ProviderFor(appRouter)
-final appRouterProvider = AutoDisposeProvider<AppRouter>.internal(
+final appRouterProvider = Provider<AppRouter>.internal(
   appRouter,
   name: r'appRouterProvider',
   debugGetCreateSourceHash:
@@ -50,6 +49,6 @@ final appRouterProvider = AutoDisposeProvider<AppRouter>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef AppRouterRef = AutoDisposeProviderRef<AppRouter>;
+typedef AppRouterRef = ProviderRef<AppRouter>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

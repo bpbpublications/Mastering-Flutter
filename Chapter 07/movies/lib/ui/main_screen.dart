@@ -19,9 +19,9 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    screens.add(HomeScreen());
-    screens.add(GenreScreen());
-    screens.add(VideoPage('QwW5RD02uJo'));
+    screens.add(const HomeScreen());
+    screens.add(const GenreScreen());
+    screens.add(const VideoPage('QwW5RD02uJo'));
   }
 
   @override

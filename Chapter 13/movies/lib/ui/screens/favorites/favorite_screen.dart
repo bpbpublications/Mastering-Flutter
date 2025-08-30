@@ -42,6 +42,7 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
 
   Widget buildScreen() {
     return SafeArea(
+      bottom: false,
       child: StreamBuilder<List<DBFavorite>>(
         stream: getFavoriteStream(),
         builder: (context, snapshot) {

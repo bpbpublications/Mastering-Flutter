@@ -14,7 +14,7 @@ class MovieRow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    late String uniqueHeroTag = movieUrl + 'MovieRow';
+    late String uniqueHeroTag = '${movieUrl}MovieRow';
     if (movieUrl.isNotEmpty) {
       return GestureDetector(
         onTap: () {

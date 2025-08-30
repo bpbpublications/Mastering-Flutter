@@ -68,6 +68,7 @@ var verySmallText = roboto.copyWith(
 
 ThemeData createTheme() {
   return ThemeData(
+    scaffoldBackgroundColor: Colors.black,
     textTheme: Typography.material2021().englishLike.copyWith(
           headlineLarge: heading1,
           headlineMedium: heading2,

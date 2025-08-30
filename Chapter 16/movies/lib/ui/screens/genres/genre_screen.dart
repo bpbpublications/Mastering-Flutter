@@ -222,14 +222,14 @@ class _GenreScreenState extends ConsumerState<GenreScreen> {
   }
 
   void saveSelectedGenres() async {
-    final prefs = await ref.read(prefsProvider.future);
+    final prefs = ref.read(prefsProvider);
     final genreNameList = genreStates.map((state) => state.genre.name).toList();
     prefs.setString(genreStringKey, genreNameList.join(','));
   }
 
   void getSelectedGenres() async {
-    final prefs = await ref.read(prefsProvider.future);
-    final genreNameList = prefs.getString(genreStringKey)?.split(',');
+    final prefs = ref.read(prefsProvider);
+    var genreNameList = (prefs.getString(genreStringKey))?.split(',');
     if (genreNameList?.isNotEmpty == true) {
       for (final genreName in genreNameList!) {
         var genreState = genreStates

@@ -8,10 +8,10 @@ import 'package:movies/ui/movie_viewmodel.dart';
 part 'providers.g.dart';
 
 @Riverpod(keepAlive: true)
-MovieAPIService movieAPIService(MovieAPIServiceRef ref) => MovieAPIService();
+MovieAPIService movieAPIService(Ref ref) => MovieAPIService();
 
 @Riverpod(keepAlive: true)
-Future<MovieViewModel> movieViewModel(MovieViewModelRef ref) async {
+Future<MovieViewModel> movieViewModel(Ref ref) async {
   final model = MovieViewModel(movieAPIService: ref.read(movieAPIServiceProvider));
   await model.setup();
   return model;
@@ -24,5 +24,5 @@ final heroTagProvider = StateProvider<String>((ref) {
 
 
 @Riverpod(keepAlive: true)
-AppRouter appRouter(AppRouterRef ref) => AppRouter();
+AppRouter appRouter(Ref ref) => AppRouter();
 

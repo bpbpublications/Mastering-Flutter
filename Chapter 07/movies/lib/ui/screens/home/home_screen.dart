@@ -31,7 +31,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     alignment: Alignment.center,
                     child: Text('Now Playing', style: largeTitle)),
               ),
-              HomeScreenImage(),
+              const HomeScreenImage(),
               TitleRow(
                 text: 'Trending',
                 onMoreClicked: () {

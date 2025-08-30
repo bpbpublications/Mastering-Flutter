@@ -43,19 +43,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 onMoreClicked: () {
                 },
               ),
-              HorizontalMovies(movies: movies, onMovieTap: onMovieTap, movieType: MovieType.Trending,),
+              HorizontalMovies(movies: movies, onMovieTap: onMovieTap, movieType: MovieType.trending,),
               TitleRow(
                 text: 'Popular',
                 onMoreClicked: () {
                 },
               ),
-              HorizontalMovies(movies: movies, onMovieTap: onMovieTap, movieType: MovieType.Popular,),
+              HorizontalMovies(movies: movies, onMovieTap: onMovieTap, movieType: MovieType.popular,),
               TitleRow(
                 text: 'Top Rated',
                 onMoreClicked: () {
                 },
               ),
-              HorizontalMovies(movies: movies, onMovieTap: onMovieTap, movieType: MovieType.TopRated,),
+              HorizontalMovies(movies: movies, onMovieTap: onMovieTap, movieType: MovieType.topRated,),
             ],
           ),
         ),

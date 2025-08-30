@@ -65,7 +65,7 @@ final networkMovieSourceProvider = FutureProvider<MovieSource>.internal(
 );
 
 typedef NetworkMovieSourceRef = FutureProviderRef<MovieSource>;
-String _$movieRepositoryHash() => r'2ec6b947a839ff39a0d23b9f9d3fc3767169a163';
+String _$movieRepositoryHash() => r'6f93240182dee2cb0bf7ed7414017ff5fdbb7254';
 
 /// See also [movieRepository].
 @ProviderFor(movieRepository)
@@ -179,20 +179,5 @@ final firebaseProvider = Provider<IDatabase>.internal(
 );
 
 typedef FirebaseRef = ProviderRef<IDatabase>;
-String _$driftDatabaseHash() => r'20e6fcc4769d26ebdbf6821e58b83d4f5a6e1951';
-
-/// See also [driftDatabase].
-@ProviderFor(driftDatabase)
-final driftDatabaseProvider = Provider<IDatabase>.internal(
-  driftDatabase,
-  name: r'driftDatabaseProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$driftDatabaseHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef DriftDatabaseRef = ProviderRef<IDatabase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

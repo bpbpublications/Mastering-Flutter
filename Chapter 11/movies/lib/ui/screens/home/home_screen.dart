@@ -40,6 +40,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   Widget buildScreen() {
     return SafeArea(
+      bottom: false,
       child: FutureBuilder(
         future: loadData(),
         builder: (context, snapshot) {

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:lumberdash/lumberdash.dart';
 import 'package:movies/utils/utils.dart';
 
 const String movieAPIUrl = 'https://api.themoviedb.org/3/';
@@ -52,7 +53,7 @@ class MovieAPIService {
         apiKey = dotEnvString;
       }
     } catch (e) {
-      print(e);
+      logError(e);
     }
     configureDio();
   }

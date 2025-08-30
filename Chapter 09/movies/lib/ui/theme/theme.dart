@@ -68,6 +68,7 @@ var verySmallText = roboto.copyWith(
 
 ThemeData createTheme() {
   return ThemeData(
+    scaffoldBackgroundColor: Colors.black,
     textTheme: Typography.material2021().englishLike.copyWith(
           headlineLarge: heading1,
           headlineMedium: heading2,
@@ -91,12 +92,12 @@ ThemeData createTheme() {
         labelTextStyle: WidgetStateTextStyle.resolveWith((Set<WidgetState> states) {
           // If the item is selected, use primary color; otherwise, use your desired unselected color
           if (states.contains(WidgetState.selected)) {
-            return TextStyle(color: Colors.white);
+            return const TextStyle(color: Colors.white);
           }
-          return TextStyle(color: posterBorder); // Unselected color
+          return const TextStyle(color: posterBorder); // Unselected color
         }),
         iconTheme: WidgetStateProperty.all<IconThemeData>(
-            IconThemeData(color: Colors.white)),
+            const IconThemeData(color: Colors.white)),
         indicatorColor: posterBorder),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: searchBarBackground,

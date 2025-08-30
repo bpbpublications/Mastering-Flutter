@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies/ui/screens/genres/genre_section.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -6,7 +7,7 @@ import 'package:movies/router/app_routes.dart';
 part 'providers.g.dart';
 
 @riverpod
-List<String> movieImages(MovieImagesRef ref) => [
+List<String> movieImages(Ref ref) => [
   'http://image.tmdb.org/t/p/w780/z1p34vh7dEOnLDmyCrlUVLuoDzd.jpg',
   'http://image.tmdb.org/t/p/w780/gKkl37BQuKTanygYQG1pyYgLVgf.jpg',
   'http://image.tmdb.org/t/p/w780/4xJd3uwtL1vCuZgEfEc8JXI9Uyx.jpg',
@@ -30,7 +31,7 @@ List<String> movieImages(MovieImagesRef ref) => [
 ];
 
 @riverpod
-List<GenreState> genres(GenresRef ref) =>  [
+List<GenreState> genres(Ref ref) =>  [
   GenreState(genre: 'Action', isSelected: false),
   GenreState(genre: 'Adventure', isSelected: false),
   GenreState(genre: 'Crime', isSelected: false),
@@ -53,5 +54,5 @@ List<GenreState> genres(GenresRef ref) =>  [
 ];
 
 @Riverpod(keepAlive: true)
-AppRouter appRouter(AppRouterRef ref) => AppRouter();
+AppRouter appRouter(Ref ref) => AppRouter();
 

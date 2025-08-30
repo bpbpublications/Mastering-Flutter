@@ -1175,101 +1175,115 @@ typedef $$DriftFavoriteTableUpdateCompanionBuilder = DriftFavoriteCompanion
 });
 
 class $$DriftFavoriteTableFilterComposer
-    extends FilterComposer<_$MovieDatabase, $DriftFavoriteTable> {
-  $$DriftFavoriteTableFilterComposer(super.$state);
-  ColumnFilters<int> get id => $state.composableBuilder(
-      column: $state.table.id,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+    extends Composer<_$MovieDatabase, $DriftFavoriteTable> {
+  $$DriftFavoriteTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<int> get movieId => $state.composableBuilder(
-      column: $state.table.movieId,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<int> get movieId => $composableBuilder(
+      column: $table.movieId, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get backdropPath => $state.composableBuilder(
-      column: $state.table.backdropPath,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get backdropPath => $composableBuilder(
+      column: $table.backdropPath, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get posterPath => $state.composableBuilder(
-      column: $state.table.posterPath,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get posterPath => $composableBuilder(
+      column: $table.posterPath, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<bool> get favorite => $state.composableBuilder(
-      column: $state.table.favorite,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<bool> get favorite => $composableBuilder(
+      column: $table.favorite, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<double> get popularity => $state.composableBuilder(
-      column: $state.table.popularity,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<double> get popularity => $composableBuilder(
+      column: $table.popularity, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<DateTime> get releaseDate => $state.composableBuilder(
-      column: $state.table.releaseDate,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<DateTime> get releaseDate => $composableBuilder(
+      column: $table.releaseDate, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get title => $state.composableBuilder(
-      column: $state.table.title,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get overview => $state.composableBuilder(
-      column: $state.table.overview,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get overview => $composableBuilder(
+      column: $table.overview, builder: (column) => ColumnFilters(column));
 }
 
 class $$DriftFavoriteTableOrderingComposer
-    extends OrderingComposer<_$MovieDatabase, $DriftFavoriteTable> {
-  $$DriftFavoriteTableOrderingComposer(super.$state);
-  ColumnOrderings<int> get id => $state.composableBuilder(
-      column: $state.table.id,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+    extends Composer<_$MovieDatabase, $DriftFavoriteTable> {
+  $$DriftFavoriteTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<int> get movieId => $state.composableBuilder(
-      column: $state.table.movieId,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<int> get movieId => $composableBuilder(
+      column: $table.movieId, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get backdropPath => $state.composableBuilder(
-      column: $state.table.backdropPath,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get backdropPath => $composableBuilder(
+      column: $table.backdropPath,
+      builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get posterPath => $state.composableBuilder(
-      column: $state.table.posterPath,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get posterPath => $composableBuilder(
+      column: $table.posterPath, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<bool> get favorite => $state.composableBuilder(
-      column: $state.table.favorite,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<bool> get favorite => $composableBuilder(
+      column: $table.favorite, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<double> get popularity => $state.composableBuilder(
-      column: $state.table.popularity,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<double> get popularity => $composableBuilder(
+      column: $table.popularity, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<DateTime> get releaseDate => $state.composableBuilder(
-      column: $state.table.releaseDate,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<DateTime> get releaseDate => $composableBuilder(
+      column: $table.releaseDate, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get title => $state.composableBuilder(
-      column: $state.table.title,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get overview => $state.composableBuilder(
-      column: $state.table.overview,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get overview => $composableBuilder(
+      column: $table.overview, builder: (column) => ColumnOrderings(column));
+}
+
+class $$DriftFavoriteTableAnnotationComposer
+    extends Composer<_$MovieDatabase, $DriftFavoriteTable> {
+  $$DriftFavoriteTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get movieId =>
+      $composableBuilder(column: $table.movieId, builder: (column) => column);
+
+  GeneratedColumn<String> get backdropPath => $composableBuilder(
+      column: $table.backdropPath, builder: (column) => column);
+
+  GeneratedColumn<String> get posterPath => $composableBuilder(
+      column: $table.posterPath, builder: (column) => column);
+
+  GeneratedColumn<bool> get favorite =>
+      $composableBuilder(column: $table.favorite, builder: (column) => column);
+
+  GeneratedColumn<double> get popularity => $composableBuilder(
+      column: $table.popularity, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get releaseDate => $composableBuilder(
+      column: $table.releaseDate, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<String> get overview =>
+      $composableBuilder(column: $table.overview, builder: (column) => column);
 }
 
 class $$DriftFavoriteTableTableManager extends RootTableManager<
@@ -1278,6 +1292,7 @@ class $$DriftFavoriteTableTableManager extends RootTableManager<
     DriftFavoriteData,
     $$DriftFavoriteTableFilterComposer,
     $$DriftFavoriteTableOrderingComposer,
+    $$DriftFavoriteTableAnnotationComposer,
     $$DriftFavoriteTableCreateCompanionBuilder,
     $$DriftFavoriteTableUpdateCompanionBuilder,
     (
@@ -1291,10 +1306,12 @@ class $$DriftFavoriteTableTableManager extends RootTableManager<
       : super(TableManagerState(
           db: db,
           table: table,
-          filteringComposer:
-              $$DriftFavoriteTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$DriftFavoriteTableOrderingComposer(ComposerState(db, table)),
+          createFilteringComposer: () =>
+              $$DriftFavoriteTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DriftFavoriteTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DriftFavoriteTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
             Value<int> id = const Value.absent(),
             Value<int> movieId = const Value.absent(),
@@ -1352,6 +1369,7 @@ typedef $$DriftFavoriteTableProcessedTableManager = ProcessedTableManager<
     DriftFavoriteData,
     $$DriftFavoriteTableFilterComposer,
     $$DriftFavoriteTableOrderingComposer,
+    $$DriftFavoriteTableAnnotationComposer,
     $$DriftFavoriteTableCreateCompanionBuilder,
     $$DriftFavoriteTableUpdateCompanionBuilder,
     (
@@ -1384,91 +1402,108 @@ typedef $$DriftConfigurationImagesTableUpdateCompanionBuilder
 });
 
 class $$DriftConfigurationImagesTableFilterComposer
-    extends FilterComposer<_$MovieDatabase, $DriftConfigurationImagesTable> {
-  $$DriftConfigurationImagesTableFilterComposer(super.$state);
-  ColumnFilters<int> get id => $state.composableBuilder(
-      column: $state.table.id,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+    extends Composer<_$MovieDatabase, $DriftConfigurationImagesTable> {
+  $$DriftConfigurationImagesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get baseUrl => $state.composableBuilder(
-      column: $state.table.baseUrl,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get baseUrl => $composableBuilder(
+      column: $table.baseUrl, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get secureBaseUrl => $state.composableBuilder(
-      column: $state.table.secureBaseUrl,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get secureBaseUrl => $composableBuilder(
+      column: $table.secureBaseUrl, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get backdropSizes => $state.composableBuilder(
-      column: $state.table.backdropSizes,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get backdropSizes => $composableBuilder(
+      column: $table.backdropSizes, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get logoSizes => $state.composableBuilder(
-      column: $state.table.logoSizes,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get logoSizes => $composableBuilder(
+      column: $table.logoSizes, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get posterSizes => $state.composableBuilder(
-      column: $state.table.posterSizes,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get posterSizes => $composableBuilder(
+      column: $table.posterSizes, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get profileSizes => $state.composableBuilder(
-      column: $state.table.profileSizes,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get profileSizes => $composableBuilder(
+      column: $table.profileSizes, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get stillSizes => $state.composableBuilder(
-      column: $state.table.stillSizes,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get stillSizes => $composableBuilder(
+      column: $table.stillSizes, builder: (column) => ColumnFilters(column));
 }
 
 class $$DriftConfigurationImagesTableOrderingComposer
-    extends OrderingComposer<_$MovieDatabase, $DriftConfigurationImagesTable> {
-  $$DriftConfigurationImagesTableOrderingComposer(super.$state);
-  ColumnOrderings<int> get id => $state.composableBuilder(
-      column: $state.table.id,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+    extends Composer<_$MovieDatabase, $DriftConfigurationImagesTable> {
+  $$DriftConfigurationImagesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get baseUrl => $state.composableBuilder(
-      column: $state.table.baseUrl,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get baseUrl => $composableBuilder(
+      column: $table.baseUrl, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get secureBaseUrl => $state.composableBuilder(
-      column: $state.table.secureBaseUrl,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get secureBaseUrl => $composableBuilder(
+      column: $table.secureBaseUrl,
+      builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get backdropSizes => $state.composableBuilder(
-      column: $state.table.backdropSizes,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get backdropSizes => $composableBuilder(
+      column: $table.backdropSizes,
+      builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get logoSizes => $state.composableBuilder(
-      column: $state.table.logoSizes,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get logoSizes => $composableBuilder(
+      column: $table.logoSizes, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get posterSizes => $state.composableBuilder(
-      column: $state.table.posterSizes,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get posterSizes => $composableBuilder(
+      column: $table.posterSizes, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get profileSizes => $state.composableBuilder(
-      column: $state.table.profileSizes,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get profileSizes => $composableBuilder(
+      column: $table.profileSizes,
+      builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get stillSizes => $state.composableBuilder(
-      column: $state.table.stillSizes,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get stillSizes => $composableBuilder(
+      column: $table.stillSizes, builder: (column) => ColumnOrderings(column));
+}
+
+class $$DriftConfigurationImagesTableAnnotationComposer
+    extends Composer<_$MovieDatabase, $DriftConfigurationImagesTable> {
+  $$DriftConfigurationImagesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get baseUrl =>
+      $composableBuilder(column: $table.baseUrl, builder: (column) => column);
+
+  GeneratedColumn<String> get secureBaseUrl => $composableBuilder(
+      column: $table.secureBaseUrl, builder: (column) => column);
+
+  GeneratedColumn<String> get backdropSizes => $composableBuilder(
+      column: $table.backdropSizes, builder: (column) => column);
+
+  GeneratedColumn<String> get logoSizes =>
+      $composableBuilder(column: $table.logoSizes, builder: (column) => column);
+
+  GeneratedColumn<String> get posterSizes => $composableBuilder(
+      column: $table.posterSizes, builder: (column) => column);
+
+  GeneratedColumn<String> get profileSizes => $composableBuilder(
+      column: $table.profileSizes, builder: (column) => column);
+
+  GeneratedColumn<String> get stillSizes => $composableBuilder(
+      column: $table.stillSizes, builder: (column) => column);
 }
 
 class $$DriftConfigurationImagesTableTableManager extends RootTableManager<
@@ -1477,6 +1512,7 @@ class $$DriftConfigurationImagesTableTableManager extends RootTableManager<
     DriftConfigurationImage,
     $$DriftConfigurationImagesTableFilterComposer,
     $$DriftConfigurationImagesTableOrderingComposer,
+    $$DriftConfigurationImagesTableAnnotationComposer,
     $$DriftConfigurationImagesTableCreateCompanionBuilder,
     $$DriftConfigurationImagesTableUpdateCompanionBuilder,
     (
@@ -1491,10 +1527,15 @@ class $$DriftConfigurationImagesTableTableManager extends RootTableManager<
       : super(TableManagerState(
           db: db,
           table: table,
-          filteringComposer: $$DriftConfigurationImagesTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$DriftConfigurationImagesTableOrderingComposer(
-              ComposerState(db, table)),
+          createFilteringComposer: () =>
+              $$DriftConfigurationImagesTableFilterComposer(
+                  $db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DriftConfigurationImagesTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DriftConfigurationImagesTableAnnotationComposer(
+                  $db: db, $table: table),
           updateCompanionCallback: ({
             Value<int> id = const Value.absent(),
             Value<String> baseUrl = const Value.absent(),
@@ -1549,6 +1590,7 @@ typedef $$DriftConfigurationImagesTableProcessedTableManager
         DriftConfigurationImage,
         $$DriftConfigurationImagesTableFilterComposer,
         $$DriftConfigurationImagesTableOrderingComposer,
+        $$DriftConfigurationImagesTableAnnotationComposer,
         $$DriftConfigurationImagesTableCreateCompanionBuilder,
         $$DriftConfigurationImagesTableUpdateCompanionBuilder,
         (
@@ -1570,41 +1612,60 @@ typedef $$DriftGenreTableUpdateCompanionBuilder = DriftGenreCompanion Function({
 });
 
 class $$DriftGenreTableFilterComposer
-    extends FilterComposer<_$MovieDatabase, $DriftGenreTable> {
-  $$DriftGenreTableFilterComposer(super.$state);
-  ColumnFilters<int> get id => $state.composableBuilder(
-      column: $state.table.id,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+    extends Composer<_$MovieDatabase, $DriftGenreTable> {
+  $$DriftGenreTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<int> get remoteId => $state.composableBuilder(
-      column: $state.table.remoteId,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<int> get remoteId => $composableBuilder(
+      column: $table.remoteId, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get name => $state.composableBuilder(
-      column: $state.table.name,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
 }
 
 class $$DriftGenreTableOrderingComposer
-    extends OrderingComposer<_$MovieDatabase, $DriftGenreTable> {
-  $$DriftGenreTableOrderingComposer(super.$state);
-  ColumnOrderings<int> get id => $state.composableBuilder(
-      column: $state.table.id,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+    extends Composer<_$MovieDatabase, $DriftGenreTable> {
+  $$DriftGenreTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<int> get remoteId => $state.composableBuilder(
-      column: $state.table.remoteId,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<int> get remoteId => $composableBuilder(
+      column: $table.remoteId, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get name => $state.composableBuilder(
-      column: $state.table.name,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+}
+
+class $$DriftGenreTableAnnotationComposer
+    extends Composer<_$MovieDatabase, $DriftGenreTable> {
+  $$DriftGenreTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get remoteId =>
+      $composableBuilder(column: $table.remoteId, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
 }
 
 class $$DriftGenreTableTableManager extends RootTableManager<
@@ -1613,6 +1674,7 @@ class $$DriftGenreTableTableManager extends RootTableManager<
     DriftGenreData,
     $$DriftGenreTableFilterComposer,
     $$DriftGenreTableOrderingComposer,
+    $$DriftGenreTableAnnotationComposer,
     $$DriftGenreTableCreateCompanionBuilder,
     $$DriftGenreTableUpdateCompanionBuilder,
     (
@@ -1625,10 +1687,12 @@ class $$DriftGenreTableTableManager extends RootTableManager<
       : super(TableManagerState(
           db: db,
           table: table,
-          filteringComposer:
-              $$DriftGenreTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$DriftGenreTableOrderingComposer(ComposerState(db, table)),
+          createFilteringComposer: () =>
+              $$DriftGenreTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DriftGenreTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DriftGenreTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
             Value<int> id = const Value.absent(),
             Value<int> remoteId = const Value.absent(),
@@ -1662,6 +1726,7 @@ typedef $$DriftGenreTableProcessedTableManager = ProcessedTableManager<
     DriftGenreData,
     $$DriftGenreTableFilterComposer,
     $$DriftGenreTableOrderingComposer,
+    $$DriftGenreTableAnnotationComposer,
     $$DriftGenreTableCreateCompanionBuilder,
     $$DriftGenreTableUpdateCompanionBuilder,
     (

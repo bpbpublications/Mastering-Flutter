@@ -28,26 +28,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.center,
                     child: Text('Now Playing', style: largeTitle)),
               ),
-              HomeScreenImage(),
+              const HomeScreenImage(),
               TitleRow(
                 text: 'Trending',
                 onMoreClicked: () {
                 },
               ),
-              HorizontalMovies(movies: images,),
+              const HorizontalMovies(movies: images,),
               TitleRow(
                 text: 'Popular',
                 onMoreClicked: () {
                 },
               ),
-              HorizontalMovies(movies: images,),
+              const HorizontalMovies(movies: images,),
               TitleRow(
                 text: 'Top Rated',
                 onMoreClicked: () {
                 },
               ),
-              HorizontalMovies(movies: images,),
-
+              const HorizontalMovies(movies: images,),
+        
             ],
           ),
         ),

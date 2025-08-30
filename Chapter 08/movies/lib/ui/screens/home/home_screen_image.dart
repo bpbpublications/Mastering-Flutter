@@ -12,7 +12,7 @@ const animationTime = 1000;
 class HomeScreenImage extends ConsumerWidget {
   final OnMovieTap onMovieTap;
 
-  HomeScreenImage({super.key, required this.onMovieTap});
+  const HomeScreenImage({super.key, required this.onMovieTap});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

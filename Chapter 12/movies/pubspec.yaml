@@ -42,7 +42,7 @@ dependencies:
   flutter_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
   auto_size_text: ^3.0.0
-  pod_player: ^0.2.2
+  youtube_player_flutter: ^9.0.1
   auto_route: ^8.2.0
   flutter_animate: ^4.5.0
   collection: ^1.17.1
@@ -54,7 +54,7 @@ dependencies:
   lumberdash: ^3.0.0
   colorize_lumberdash: ^3.0.0
   shared_preferences: ^2.2.3
-  drift: ^2.18.0
+  drift: ^2.20.2
   drift_flutter: ^0.2.0
   sqlite3_flutter_libs: ^0.5.24
 
@@ -76,7 +76,7 @@ dev_dependencies:
   auto_route_generator: ^8.0.0
   json_serializable: ^6.7.1
   freezed: ^2.4.7
-  drift_dev: ^2.18.0
+  drift_dev: ^2.20.3
 
 dependency_overrides:
   web: ^1.0.0

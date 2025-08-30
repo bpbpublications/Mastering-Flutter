@@ -23,7 +23,7 @@ class SearchMovieEvent extends MenuEvent {
 }
 
 class MenuManager {
-  final ProviderRef ref;
+  final Ref ref;
 
   MenuManager(this.ref);
 

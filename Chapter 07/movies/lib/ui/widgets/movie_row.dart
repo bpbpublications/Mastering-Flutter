@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/utils/utils.dart';
 
-import '../../utils/utils.dart';
 
 class MovieRow extends StatelessWidget {
   final String movie;

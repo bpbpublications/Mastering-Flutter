@@ -21,7 +21,6 @@ class FavoriteRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     final imageUrl =
         movieViewModel.getImageUrl(ImageSize.small, favorite.posterPath);
     return GestureDetector(

@@ -9,6 +9,8 @@ const delayTime = 1000 * 10;
 const animationTime = 1000;
 
 class HomeScreenImage extends ConsumerWidget {
+  const HomeScreenImage({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final images = ref.read(movieImagesProvider);

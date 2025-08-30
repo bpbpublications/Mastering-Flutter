@@ -6,10 +6,10 @@ import 'package:movies/providers.dart';
 
 import 'package:movies/utils/utils.dart';
 enum MovieType {
-  Trending,
-  TopRated,
-  NowPlaying,
-  Popular
+  trending,
+  topRated,
+  nowPlaying,
+  popular
 }
 
 class MovieWidget extends ConsumerStatefulWidget {

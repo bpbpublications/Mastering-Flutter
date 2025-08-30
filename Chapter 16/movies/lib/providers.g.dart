@@ -65,7 +65,7 @@ final networkMovieSourceProvider = FutureProvider<MovieSource>.internal(
 );
 
 typedef NetworkMovieSourceRef = FutureProviderRef<MovieSource>;
-String _$movieRepositoryHash() => r'2ec6b947a839ff39a0d23b9f9d3fc3767169a163';
+String _$movieRepositoryHash() => r'6f93240182dee2cb0bf7ed7414017ff5fdbb7254';
 
 /// See also [movieRepository].
 @ProviderFor(movieRepository)
@@ -109,11 +109,11 @@ final sharedPrefsProvider = FutureProvider<SharedPreferences>.internal(
 );
 
 typedef SharedPrefsRef = FutureProviderRef<SharedPreferences>;
-String _$prefsHash() => r'17cdb26eee576ff65fcfde9a84ac9146206202ba';
+String _$prefsHash() => r'a1e38574dd418d46fa6ebc6d7503e8b424b7c33c';
 
 /// See also [prefs].
 @ProviderFor(prefs)
-final prefsProvider = FutureProvider<Prefs>.internal(
+final prefsProvider = Provider<Prefs>.internal(
   prefs,
   name: r'prefsProvider',
   debugGetCreateSourceHash:
@@ -122,7 +122,7 @@ final prefsProvider = FutureProvider<Prefs>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef PrefsRef = FutureProviderRef<Prefs>;
+typedef PrefsRef = ProviderRef<Prefs>;
 String _$appRouterHash() => r'42599edccdcfb58d05fc5c5c1776f848db2a5b20';
 
 /// See also [appRouter].
@@ -137,11 +137,11 @@ final appRouterProvider = Provider<AppRouter>.internal(
 );
 
 typedef AppRouterRef = ProviderRef<AppRouter>;
-String _$databaseHash() => r'3b10f3d1f950d07183a926c4582b968e456056ba';
+String _$databaseHash() => r'1bc23d9283281c92738a42e40c070e57a6ee775b';
 
 /// See also [database].
 @ProviderFor(database)
-final databaseProvider = FutureProvider<IDatabase>.internal(
+final databaseProvider = Provider<IDatabase>.internal(
   database,
   name: r'databaseProvider',
   debugGetCreateSourceHash:
@@ -150,12 +150,12 @@ final databaseProvider = FutureProvider<IDatabase>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef DatabaseRef = FutureProviderRef<IDatabase>;
-String _$firebaseHash() => r'4e0ae8de0e6950b53d6f6ac67a73f1cbc4fc27bf';
+typedef DatabaseRef = ProviderRef<IDatabase>;
+String _$firebaseHash() => r'a10e964d431a83d2b0af23ec8da3430dcf9106c4';
 
 /// See also [firebase].
 @ProviderFor(firebase)
-final firebaseProvider = FutureProvider<IDatabase>.internal(
+final firebaseProvider = Provider<IDatabase>.internal(
   firebase,
   name: r'firebaseProvider',
   debugGetCreateSourceHash:
@@ -164,12 +164,12 @@ final firebaseProvider = FutureProvider<IDatabase>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef FirebaseRef = FutureProviderRef<IDatabase>;
-String _$driftDatabaseHash() => r'57a57a8cafbbaed5eca1bc2581913e5f1546089a';
+typedef FirebaseRef = ProviderRef<IDatabase>;
+String _$driftDatabaseHash() => r'20e6fcc4769d26ebdbf6821e58b83d4f5a6e1951';
 
 /// See also [driftDatabase].
 @ProviderFor(driftDatabase)
-final driftDatabaseProvider = FutureProvider<IDatabase>.internal(
+final driftDatabaseProvider = Provider<IDatabase>.internal(
   driftDatabase,
   name: r'driftDatabaseProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -179,6 +179,6 @@ final driftDatabaseProvider = FutureProvider<IDatabase>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef DriftDatabaseRef = FutureProviderRef<IDatabase>;
+typedef DriftDatabaseRef = ProviderRef<IDatabase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

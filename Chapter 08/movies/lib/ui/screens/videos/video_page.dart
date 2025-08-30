@@ -2,10 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pod_player/pod_player.dart';
-
-import 'package:movies/utils/utils.dart';
 import 'package:movies/ui/theme/theme.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 @RoutePage(name: 'VideoPageRoute')
 class VideoPage extends ConsumerStatefulWidget {
@@ -18,23 +16,27 @@ class VideoPage extends ConsumerStatefulWidget {
 }
 
 class _VideoPageState extends ConsumerState<VideoPage> {
-  late final PodPlayerController podPlayerController;
+  late YoutubePlayerController _youTubePlayerController;
 
   @override
   void initState() {
     super.initState();
-    final playVideoFrom = PlayVideoFrom.youtube(
-      youtubeUrlFromId(widget.movieVideo),
+    _youTubePlayerController = YoutubePlayerController(
+      initialVideoId: widget.movieVideo,
+      flags: const YoutubePlayerFlags(
+        hideControls: true,
+        mute: false,
+        showLiveFullscreenButton: false,
+        loop: false,
+        autoPlay: true
+      ),
     );
-    podPlayerController = PodPlayerController(
-        playVideoFrom: playVideoFrom,
-        podPlayerConfig: const PodPlayerConfig(autoPlay: false))
-      ..initialise();
   }
 
   @override
   void dispose() {
-    podPlayerController.dispose();
+    _youTubePlayerController.dispose();
+    SystemChrome.setPreferredOrientations(<DeviceOrientation>[]);
     super.dispose();
   }
 
@@ -60,11 +62,19 @@ class _VideoPageState extends ConsumerState<VideoPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: PodVideoPlayer(
-                  controller: podPlayerController,
-                  matchVideoAspectRatioToFrame: true,
+                child:
+                YoutubePlayer(
+                  controller: _youTubePlayerController,
+                  showVideoProgressIndicator: true,
+                  progressIndicatorColor: Colors.amber,
+                  progressColors: const ProgressBarColors(
+                    playedColor: Colors.amber,
+                    handleColor: Colors.amberAccent,
                   ),
-            ),
+                  onReady: () {
+                  },
+                ),
+              ),
           ],
         ),
       ),

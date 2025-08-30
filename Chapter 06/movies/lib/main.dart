@@ -17,10 +17,6 @@ class MainApp extends StatefulWidget {
   State<MainApp> createState() => _MainAppState();
 }
 
-/**
- * This is the State for the MainApp
- * Used to display the main app
- */
 class _MainAppState extends State<MainApp> {
 
   @override
@@ -29,7 +25,7 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp(
       title: 'Movies',
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: const MainScreen(),
       theme: createTheme(),
     );
   }

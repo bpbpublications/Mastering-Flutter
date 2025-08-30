@@ -2,6 +2,7 @@ import 'package:event_bus/event_bus.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lumberdash/lumberdash.dart';
 import 'package:movie_data/movie_data.dart';
 import 'package:movie_plugin/movie_plugin.dart';
 import 'package:movies/firebase_options.dart';
@@ -29,13 +30,13 @@ final currentIndexProvider = StateProvider<int>((ref) {
 
 
 @Riverpod(keepAlive: true)
-MenuManager menuManager(MenuManagerRef ref) => MenuManager(ref);
+MenuManager menuManager(Ref ref) => MenuManager(ref);
 
 @Riverpod(keepAlive: true)
-EventBus eventBus(EventBusRef ref) => EventBus();
+EventBus eventBus(Ref ref) => EventBus();
 
 @Riverpod(keepAlive: true)
-Future<MovieAPIService> movieAPIService(MovieAPIServiceRef ref) async {
+Future<MovieAPIService> movieAPIService(Ref ref) async {
   String apiKey;
   if (!isWeb()) {
     apiKey = dotenv.env['TMDB_KEY']!;
@@ -63,19 +64,19 @@ Future<String> webLoad() async {
       apiKey = dotEnvString;
     }
   } catch (e) {
-    print(e);
+    logError(e);
   }
   return apiKey;
 }
 
 @Riverpod(keepAlive: true)
-Future<MovieSource> networkMovieSource(NetworkMovieSourceRef ref) async {
+Future<MovieSource> networkMovieSource(Ref ref) async {
   final service = await ref.read(movieAPIServiceProvider.future);
   return NetworkMovieSource(service);
 }
 
 @Riverpod(keepAlive: true)
-Future<MovieSource> movieRepository(MovieRepositoryRef ref) async {
+Future<MovieSource> movieRepository(Ref ref) async {
   final database = ref.watch(databaseProvider);
   final serviceFuture = ref.watch(networkMovieSourceProvider.future);
   return MovieRepository(
@@ -83,7 +84,7 @@ Future<MovieSource> movieRepository(MovieRepositoryRef ref) async {
 }
 
 @Riverpod(keepAlive: true)
-Future<MovieViewModel> movieViewModel(MovieViewModelRef ref) async {
+Future<MovieViewModel> movieViewModel(Ref ref) async {
   final repositoryFuture = ref.watch(movieRepositoryProvider.future);
   final model = MovieViewModel(await repositoryFuture);
   await model.setup();
@@ -91,24 +92,24 @@ Future<MovieViewModel> movieViewModel(MovieViewModelRef ref) async {
 }
 
 @Riverpod(keepAlive: true)
-Future<SharedPreferences> sharedPrefs(SharedPrefsRef ref) =>
+Future<SharedPreferences> sharedPrefs(Ref ref) =>
     SharedPreferences.getInstance();
 
 @Riverpod(keepAlive: true)
-Prefs prefs(PrefsRef ref) {
+Prefs prefs(Ref ref) {
   return Prefs(ref.read(moviePluginProvider));
 }
 
 @Riverpod(keepAlive: true)
-MoviePlugin moviePlugin(MoviePluginRef ref) {
+MoviePlugin moviePlugin(Ref ref) {
   return MoviePlugin();
 }
 
 @Riverpod(keepAlive: true)
-AppRouter appRouter(AppRouterRef ref) => AppRouter();
+AppRouter appRouter(Ref ref) => AppRouter();
 
 @Riverpod(keepAlive: true)
-IDatabase database(DatabaseRef ref) {
+IDatabase database(Ref ref) {
   // Change this to what we want to use
   // final driftFuture = ref.watch(driftDatabaseProvider.future);
   // return driftFuture;
@@ -116,12 +117,8 @@ IDatabase database(DatabaseRef ref) {
 }
 
 @Riverpod(keepAlive: true)
-IDatabase firebase(FirebaseRef ref) {
+IDatabase firebase(Ref ref) {
   return FirebaseDatabase(DefaultFirebaseOptions.currentPlatform);
 }
 
-@Riverpod(keepAlive: true)
-IDatabase driftDatabase(DriftDatabaseRef ref) {
-  return DriftDatabase();
-}
 

@@ -46,6 +46,12 @@ class _MovieListingState extends ConsumerState<MovieListing> {
   }
 
   @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final movieViewModelAsync = ref.watch(movieViewModelProvider);
     return movieViewModelAsync.when(

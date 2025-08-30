@@ -1,5 +1,4 @@
 import 'package:drift/drift.dart';
-import 'package:drift_flutter/drift_flutter.dart';
 import 'package:movies/data/database/drift/connection.dart' as impl;
 
 part 'movie_database.g.dart';

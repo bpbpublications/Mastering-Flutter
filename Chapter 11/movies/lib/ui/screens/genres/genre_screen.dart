@@ -52,6 +52,7 @@ class _GenreScreenState extends ConsumerState<GenreScreen> {
 
   Widget buildScreen() {
     return SafeArea(
+      bottom: false,
       child: Container(
         color: screenBackground,
         child: Column(
